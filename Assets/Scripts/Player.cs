@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
         _movement.y = Input.GetAxisRaw("Vertical"); // W, S, Up Arrow, Down Arrow
     }
 
+    
     // FixedUpdate is called at a fixed interval and is used for handling physics
     void FixedUpdate()
     {
