@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7422850664043843}
   - component: {fileID: 360590548672899351}
+  - component: {fileID: 4348795412345187346}
   m_Layer: 0
   m_Name: The eye
   m_TagString: The Boss
@@ -87,3 +88,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4348795412345187346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7619709892491145057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a058c07e0254770980b959802844685, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 7156587917843722166, guid: 761a439f8b845ff4cb770ee4c4c354cd, type: 3}

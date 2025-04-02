@@ -1,10 +1,14 @@
+using System;
+using Pool;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField]private float moveSpeed = 5f; // Speed of the player
+    [SerializeField] private float moveSpeed = 5f; // Speed of the player
     private Rigidbody2D _rb;
     private Vector2 _movement;
+    private float _shootCooldown = 0.5f; // Cooldown time in seconds
+    private float _lastShootTime;
 
     // Start is called before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -18,13 +22,27 @@ public class Player : MonoBehaviour
         // Getting input from keyboard (WASD or Arrow keys)
         _movement.x = Input.GetAxisRaw("Horizontal"); // A, D, Left Arrow, Right Arrow
         _movement.y = Input.GetAxisRaw("Vertical"); // W, S, Up Arrow, Down Arrow
+
+        HandleMovement();
+        HandleShooting();
     }
 
-    
-    // FixedUpdate is called at a fixed interval and is used for handling physics
-    void FixedUpdate()
+    private void HandleMovement()
     {
-        // Moving the player using Rigidbody2D
         _rb.MovePosition(_rb.position + _movement * moveSpeed * Time.fixedDeltaTime);
     }
+
+    private void HandleShooting()
+    {
+        // Check if Space is pressed and if cooldown has passed
+        if (Input.GetKeyDown(KeyCode.Space) && Time.time >= _lastShootTime + _shootCooldown)
+        {
+            var bullet = BulletPool.Instance.Get(); // Retrieve bullet from object pool
+            bullet.transform.position = transform.position + new Vector3(0f, 1.5f, 0f); // Set bullet position slightly above the player
+            bullet.Shoot(Vector3.up, "Bullet", 2000, "PlayerBullet"); // Shoot the bullet upwards
+            _lastShootTime = Time.time; // Update the time of the last shot
+        }
+    }
+    
 }
+
