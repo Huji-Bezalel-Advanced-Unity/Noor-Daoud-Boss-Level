@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DefaultNamespace
+namespace LTD.Core.Managers
 {
     public class Events
     {

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DefaultNamespace
+namespace LTDCore.Managers
 {
     public class SafeZone:MonoBehaviour
     {
