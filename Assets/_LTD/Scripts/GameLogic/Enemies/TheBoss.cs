@@ -1,14 +1,14 @@
 ﻿using System.Collections;
+using LTD.Core.BaseMono;
 using LTD.Core.Managers;
-using LTDCore.Managers;
 using Pool;
 using UnityEngine;
 
 namespace BLE.Gamelogic.Enemies
 {
-    public class TheBoss : MonoBehaviour
+    public class TheBoss : LTDBaseMono
     {
-        [Header("References")]
+           [Header("References")]
         [SerializeField] private Transform target;
 
         private float _shootCooldown = 0.5f;
@@ -42,7 +42,7 @@ namespace BLE.Gamelogic.Enemies
 
             _shootingCoroutine = StartCoroutine(HandleShootingCoroutine());
 
-           // this.StopAndStartCoroutine(ref _shootingCoroutine, HandleShootingCoroutine());
+            this.StopAndStartCoroutine(ref _shootingCoroutine, HandleShootingCoroutine());
         }
 
         private void StopShooting()
@@ -52,7 +52,7 @@ namespace BLE.Gamelogic.Enemies
             //     StopCoroutine(_shootingCoroutine);
             // }
 
-       //     this.StopWithNullCheckCoroutine(ref _shootingCoroutine);
+            this.StopWithNullCheckCoroutine(ref _shootingCoroutine);
         }
 
         #endregion

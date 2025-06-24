@@ -1,18 +1,19 @@
-﻿using LTD.Core.Managers;
+﻿using LTD.Core.BaseMono;
+using LTD.Core.Managers;
 using UnityEngine.SceneManagement;
-namespace LTD.Core
+
+namespace LTD.Core.Louders
 {
     public class LTDGameLoader : LTDBaseMono
     {
-        private void Awake()
+        private void Start()
         {
-            new LTDCoreManager();
-            LoadNextScene();
-        }
-
-        private void LoadNextScene()
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            var coreManager = new LTDCoreManager();
+            coreManager.LoadManagers(() =>
+            {
+                int gameSceneIndex = 1;
+                SceneManager.LoadScene(gameSceneIndex);
+            });
         }
     }
 }

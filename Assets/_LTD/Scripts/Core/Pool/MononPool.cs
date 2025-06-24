@@ -2,7 +2,7 @@
 using Pool;
 using UnityEngine;
 
-namespace Pool
+namespace LTD.Core.Pool
 {
     public class MononPool<T> : MonoSingleton<MononPool<T>> where T : MonoBehaviour, IPoolable
     {
@@ -26,7 +26,7 @@ namespace Pool
 
             var obj = _available.Pop();
             obj.gameObject.SetActive(true);
-            obj.Reset();
+            obj.SetPoolable();
             return obj;
         }
 
@@ -45,6 +45,5 @@ namespace Pool
                 _available.Push(obj);
             }
         }
-
     }
 }
