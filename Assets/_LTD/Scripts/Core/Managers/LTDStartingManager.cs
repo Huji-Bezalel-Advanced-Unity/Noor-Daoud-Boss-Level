@@ -1,11 +1,16 @@
 ﻿
+using System;
 using LTD.Core.BaseMono;
+using UnityEngine;
+
 namespace LTD.Core.Managers
 {
-    public class LTDMonoManagerObject:LTDBaseMono
+    public class LTDStartingManager:LTDBaseMono
     {
-        public static LTDMonoManagerObject Instance { get; private set; }
-
+        [SerializeField] private GameObject startMenu;
+        public static LTDStartingManager Instance { get; private set; }
+        
+        
         private void Awake()
         {
             if (Instance == null)
@@ -14,5 +19,6 @@ namespace LTD.Core.Managers
                 DontDestroyOnLoad(gameObject);
             }
         }
+        
     }
 }

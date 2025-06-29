@@ -14,8 +14,6 @@ namespace LTD.Core.Louders
 
         private void Awake()
         {
-            loadingSlider.fillRect.GetComponent<Image>().color = Color.red;
-
             var coreManager = new LTDCoreManager();
             coreManager.LoadManagers(() =>
             {
@@ -28,17 +26,14 @@ namespace LTD.Core.Louders
             int gameSceneIndex = 0; 
             AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(gameSceneIndex);
             asyncLoad.allowSceneActivation = false;
-
-          
+            
             while (asyncLoad.progress < 0.9f)
             {
                 float progress = Mathf.Clamp01(asyncLoad.progress / 0.9f);
                 loadingSlider.value = progress;
-                Debug.Log($"Loading progress: {progress}");
                 yield return null;
             }
             loadingSlider.value = 1f;
-            yield return new WaitForSeconds(2f);
             asyncLoad.allowSceneActivation = true;
         }
     }
