@@ -1,8 +1,8 @@
-using System;
+using LTD.Core.BaseMono;
 using Pool;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : LTDBaseMono
 {
     [SerializeField] private float moveSpeed = 5f; // Speed of the player
     private Rigidbody2D _rb;
@@ -45,4 +45,3 @@ public class Player : MonoBehaviour
     }
     
 }
-

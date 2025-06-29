@@ -1,25 +1,26 @@
-﻿using UnityEngine;
+﻿using LTD.Core.BaseMono;
+using LTD.Core.Managers;
+using UnityEngine;
 
-namespace LTDCore.Managers
+namespace BLE.Gamelogic.Zone
 {
-    public class SafeZone:MonoBehaviour
+    public class SafeZone : LTDBaseMono
     {
-        
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.gameObject.CompareTag("Player"))
-            {
-                print("SafeZone");
-                Events.SafeZone?.Invoke();
-            }
+            // if (other.gameObject.CompareTag("Player"))
+            // {
+            print("SafeZone");
+            Events.SafeZone?.Invoke();
+            // }
         }
         private void OnTriggerExit2D(Collider2D other)
         {
-            if (other.gameObject.CompareTag("Player"))
-            {
-                print("ResZone");
-                Events.RedZone?.Invoke();
-            }        
+            // if (other.gameObject.CompareTag("Player"))
+            // {
+            print("ResZone");
+            Events.RedZone?.Invoke();
+            // }
         }
     }
 }

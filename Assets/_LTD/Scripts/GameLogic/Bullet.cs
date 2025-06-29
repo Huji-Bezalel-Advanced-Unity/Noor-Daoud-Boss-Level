@@ -1,10 +1,10 @@
-﻿using System;
-using Pool;
+﻿using LTD.Core.BaseMono;
+using LTD.Core.Pool;
 using UnityEngine;
 
 namespace Pool
 {
-    public class Bullet : MonoBehaviour, IPoolable
+    public class Bullet : LTDBaseMono, IPoolable
     {
         [Header("Settings")]
         [SerializeField] private float speed = 10f; // Speed of the bullet
