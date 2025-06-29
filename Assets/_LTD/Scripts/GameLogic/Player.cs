@@ -39,7 +39,7 @@ public class Player : LTDBaseMono
         {
             var bullet = BulletPool.Instance.Get(); // Retrieve bullet from object pool
             bullet.transform.position = transform.position + new Vector3(0f, 1.5f, 0f); // Set bullet position slightly above the player
-            bullet.Shoot(Vector3.up, "Bullet", 2000, "PlayerBullet"); // Shoot the bullet upwards
+            bullet.Shoot(Vector3.up, "Bullet", 10, "PlayerBullet"); // Shoot the bullet upwards
             _lastShootTime = Time.time; // Update the time of the last shot
         }
     }

@@ -5,10 +5,9 @@ using UnityEngine;
 
 namespace LTD.Core.Managers
 {
-    public class LTDStartingManager:LTDBaseMono
+    public class LTDSGameManager:LTDBaseMono
     {
-        [SerializeField] private GameObject startMenu;
-        public static LTDStartingManager Instance { get; private set; }
+        public static LTDSGameManager Instance { get; private set; }
         
         
         private void Awake()

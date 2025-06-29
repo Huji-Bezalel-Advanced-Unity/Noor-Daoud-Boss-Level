@@ -30,7 +30,7 @@ namespace Pool
         {
             BulletPool.Instance.Return(this);
             _isFired = false;
-
+//TODO: the layers.fight.
             //TODO Remove Health from player?
         }
 

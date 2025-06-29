@@ -131,6 +131,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Safe zone (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2698142872718779725, guid: 78bf45b56901db04aa9915c4e79d90d3, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8122011887320596582, guid: 78bf45b56901db04aa9915c4e79d90d3, type: 3}
       propertyPath: m_LocalScale.x
       value: 4.468357
@@ -574,7 +578,7 @@ GameObject:
   m_Component:
   - component: {fileID: 523385738}
   - component: {fileID: 523385739}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Little devil (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -745,7 +749,7 @@ GameObject:
   m_Component:
   - component: {fileID: 765764591}
   - component: {fileID: 765764592}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Little devil (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -885,6 +889,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Safe zone (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 2698142872718779725, guid: 78bf45b56901db04aa9915c4e79d90d3, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8122011887320596582, guid: 78bf45b56901db04aa9915c4e79d90d3, type: 3}
       propertyPath: m_LocalScale.x
       value: 4.468357
@@ -958,6 +966,10 @@ PrefabInstance:
     - target: {fileID: 2698142872718779725, guid: 78bf45b56901db04aa9915c4e79d90d3, type: 3}
       propertyPath: m_Name
       value: Safe zone
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698142872718779725, guid: 78bf45b56901db04aa9915c4e79d90d3, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8122011887320596582, guid: 78bf45b56901db04aa9915c4e79d90d3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1108,6 +1120,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Safe zone (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 2698142872718779725, guid: 78bf45b56901db04aa9915c4e79d90d3, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8122011887320596582, guid: 78bf45b56901db04aa9915c4e79d90d3, type: 3}
       propertyPath: m_LocalScale.x
       value: 3.8011765
@@ -1181,6 +1197,10 @@ PrefabInstance:
     - target: {fileID: 2698142872718779725, guid: 78bf45b56901db04aa9915c4e79d90d3, type: 3}
       propertyPath: m_Name
       value: Safe zone (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698142872718779725, guid: 78bf45b56901db04aa9915c4e79d90d3, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8122011887320596582, guid: 78bf45b56901db04aa9915c4e79d90d3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1322,6 +1342,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &984163149 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7156587917843722166, guid: 761a439f8b845ff4cb770ee4c4c354cd, type: 3}
+  m_PrefabInstance: {fileID: 393439587423796275}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1148829262
 GameObject:
   m_ObjectHideFlags: 0
@@ -1332,7 +1357,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1148829263}
   - component: {fileID: 1148829264}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Little devil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1419,7 +1444,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1180036153}
   - component: {fileID: 1180036154}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Little devil (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1508,6 +1533,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Safe zone (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 2698142872718779725, guid: 78bf45b56901db04aa9915c4e79d90d3, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8122011887320596582, guid: 78bf45b56901db04aa9915c4e79d90d3, type: 3}
       propertyPath: m_LocalScale.x
       value: 3.3057108
@@ -1582,6 +1611,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Safe zone (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 2698142872718779725, guid: 78bf45b56901db04aa9915c4e79d90d3, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8122011887320596582, guid: 78bf45b56901db04aa9915c4e79d90d3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.829443
@@ -1642,7 +1675,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1375166411}
   - component: {fileID: 1375166412}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Little devil (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1729,7 +1762,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1378210132}
   - component: {fileID: 1378210133}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Little devil (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1818,6 +1851,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Safe zone (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 2698142872718779725, guid: 78bf45b56901db04aa9915c4e79d90d3, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8122011887320596582, guid: 78bf45b56901db04aa9915c4e79d90d3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 17.4
@@ -1879,6 +1916,10 @@ PrefabInstance:
     - target: {fileID: 2698142872718779725, guid: 78bf45b56901db04aa9915c4e79d90d3, type: 3}
       propertyPath: m_Name
       value: Safe zone (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698142872718779725, guid: 78bf45b56901db04aa9915c4e79d90d3, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8122011887320596582, guid: 78bf45b56901db04aa9915c4e79d90d3, type: 3}
       propertyPath: m_LocalScale.x
@@ -1954,6 +1995,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Safe zone (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 2698142872718779725, guid: 78bf45b56901db04aa9915c4e79d90d3, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8122011887320596582, guid: 78bf45b56901db04aa9915c4e79d90d3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.149444
@@ -2018,7 +2063,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1603783107}
   - component: {fileID: 1603783108}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Little devil (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2273,6 +2318,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Safe zone (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2698142872718779725, guid: 78bf45b56901db04aa9915c4e79d90d3, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8122011887320596582, guid: 78bf45b56901db04aa9915c4e79d90d3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.100557
@@ -2460,6 +2509,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Safe zone (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 2698142872718779725, guid: 78bf45b56901db04aa9915c4e79d90d3, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8122011887320596582, guid: 78bf45b56901db04aa9915c4e79d90d3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14.4
@@ -2521,6 +2574,10 @@ PrefabInstance:
     - target: {fileID: 233383236979789026, guid: 761a439f8b845ff4cb770ee4c4c354cd, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 233383236979789026, guid: 761a439f8b845ff4cb770ee4c4c354cd, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3214673030512187515, guid: 761a439f8b845ff4cb770ee4c4c354cd, type: 3}
       propertyPath: m_Color.b
@@ -2712,9 +2769,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4348795412345187346, guid: c80d42e9403a3ec4b8e52b7567a6e89b, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 984163149}
     - target: {fileID: 7619709892491145057, guid: c80d42e9403a3ec4b8e52b7567a6e89b, type: 3}
       propertyPath: m_Name
       value: The devil
+      objectReference: {fileID: 0}
+    - target: {fileID: 7619709892491145057, guid: c80d42e9403a3ec4b8e52b7567a6e89b, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

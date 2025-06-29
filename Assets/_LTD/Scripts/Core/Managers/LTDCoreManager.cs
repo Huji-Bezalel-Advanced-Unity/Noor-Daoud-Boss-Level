@@ -19,7 +19,7 @@ namespace LTD.Core.Managers
              Debug.Log("InitCoreManagers started.");
 
              GameObject temp = new GameObject("MonoManager");
-             temp.AddComponent<LTDStartingManager>();
+             temp.AddComponent<LTDSGameManager>();
              Debug.Log("MonoManager GameObject created");
 
              onComplete?.Invoke();
