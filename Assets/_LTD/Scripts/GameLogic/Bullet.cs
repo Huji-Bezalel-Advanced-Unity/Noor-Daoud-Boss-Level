@@ -18,7 +18,7 @@ namespace Pool
 
         public void Shoot(Vector3 direction, string tag, float speed, string bulletLayer)
         {
-            _rigidbody2D.linearVelocity = direction * speed; // Correct usage of velocity
+            _rigidbody2D.linearVelocity = direction * speed; 
             gameObject.tag = tag;
             gameObject.layer = LayerMask.NameToLayer(bulletLayer);
 

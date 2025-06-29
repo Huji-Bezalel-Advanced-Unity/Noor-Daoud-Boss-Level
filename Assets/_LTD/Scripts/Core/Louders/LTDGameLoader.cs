@@ -10,56 +10,36 @@ namespace LTD.Core.Louders
     public class LTDGameLoader : LTDBaseMono
     {
         [Header("UI Elements")]
-        [SerializeField] private GameObject loadingScreen;
-        [SerializeField] private GameObject startButton; // The "Start" button shown after loading
         [SerializeField] private Slider loadingSlider;
-
-        private AsyncOperation sceneLoadingOperation;
-        private bool managersLoaded = false;
 
         private void Awake()
         {
-            // Hide UI elements at startup
-            loadingScreen.SetActive(true);
-            startButton.SetActive(false);
+            loadingSlider.fillRect.GetComponent<Image>().color = Color.red;
 
-            // Load managers first
             var coreManager = new LTDCoreManager();
             coreManager.LoadManagers(() =>
             {
-                managersLoaded = true;
-                StartCoroutine(LoadGameAsync());
+                StartCoroutine(LoadNextSceneAsync());
             });
         }
 
-        IEnumerator LoadGameAsync()
+        IEnumerator LoadNextSceneAsync()
         {
-            int gameSceneIndex = 1; // Scene to load
-            sceneLoadingOperation = SceneManager.LoadSceneAsync(gameSceneIndex);
-            sceneLoadingOperation.allowSceneActivation = false; // Don't activate yet
+            int gameSceneIndex = 0; 
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(gameSceneIndex);
+            asyncLoad.allowSceneActivation = false;
 
-            while (sceneLoadingOperation.progress < 0.9f)
+          
+            while (asyncLoad.progress < 0.9f)
             {
-                float progress = Mathf.Clamp01(sceneLoadingOperation.progress / 0.9f);
+                float progress = Mathf.Clamp01(asyncLoad.progress / 0.9f);
                 loadingSlider.value = progress;
+                Debug.Log($"Loading progress: {progress}");
                 yield return null;
             }
-
-            // Fully loaded, now show the Start button
             loadingSlider.value = 1f;
-            startButton.SetActive(true);
-        }
-
-        public void StartGame()
-        {
-            if (managersLoaded && sceneLoadingOperation != null)
-            {
-                sceneLoadingOperation.allowSceneActivation = true;
-            }
-            else
-            {
-                Debug.LogWarning("Managers not loaded or scene not ready!");
-            }
+            yield return new WaitForSeconds(2f);
+            asyncLoad.allowSceneActivation = true;
         }
     }
 }
