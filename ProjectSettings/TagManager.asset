@@ -7,6 +7,7 @@ TagManager:
   - The red zone
   - The Boss
   - Bullet
+  - Spell
   layers:
   - Default
   - TransparentFX

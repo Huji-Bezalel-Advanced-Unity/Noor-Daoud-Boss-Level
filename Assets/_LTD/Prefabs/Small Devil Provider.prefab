@@ -55,7 +55,8 @@ MonoBehaviour:
   - {fileID: 5364322155507573595}
   - {fileID: 4069529039875368671}
   - {fileID: 8023517691120638295}
-  timeBetweenEachSpawn: 0.6
+  timeBetweenEachSpawn: 0.4
+  spawnInterval: 1
 --- !u!1001 &971393217740124825
 PrefabInstance:
   m_ObjectHideFlags: 0

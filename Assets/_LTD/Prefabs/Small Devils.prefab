@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 372482457807584367}
   - component: {fileID: 3335355289739029291}
-  - component: {fileID: 6117484938489159040}
   - component: {fileID: -3931783385721175597}
+  - component: {fileID: 6469731421265329560}
   m_Layer: 7
   m_Name: Small Devils
   m_TagString: Untagged
@@ -89,22 +89,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6117484938489159040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6476802561347026803}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8cce778cc704454ae9f653fffdcfe65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  radiusRange: {x: 1, y: 2}
-  idleTimeRangeSeconds: {x: 1, y: 2}
-  walkSpeed: 1
-  enemiesProvider: {fileID: 0}
 --- !u!114 &-3931783385721175597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,5 +101,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e72473571d3f477da4de884aa1e69f47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  enemiesProvider: {fileID: 0}
+  speed: 7
+--- !u!58 &6469731421265329560
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6476802561347026803}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.5

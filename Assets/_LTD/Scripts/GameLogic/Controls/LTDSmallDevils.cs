@@ -7,7 +7,7 @@ namespace _LTD.Scripts.GameLogic.Controls
 {
     public class LTDSmallDevils:LTDBaseMono
     {
-        [SerializeField] private float speed = 5f;
+        [SerializeField] private float speed = 6f;
         private LTDPlayer _player;
         
         private void Awake()
@@ -27,10 +27,11 @@ namespace _LTD.Scripts.GameLogic.Controls
         
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.gameObject.CompareTag("PlayerBullet"))
+            print("Enter");
+            if (other.gameObject.CompareTag("Player"))
             {
+                print("Spell triggered");
                 Destroy(gameObject);
-                Destroy(other.gameObject);
             }
         }
     }

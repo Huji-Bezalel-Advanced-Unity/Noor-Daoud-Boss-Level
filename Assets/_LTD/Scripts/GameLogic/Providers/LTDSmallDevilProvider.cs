@@ -12,11 +12,12 @@ namespace BLE.Gamelogic.Providers
     {
         [SerializeField] private LTDSmallDevils enemeyPrefab;
         [SerializeField] private Transform[] spawnPoints;
-        [SerializeField] private float timeBetweenEachSpawn = 2f;
+        [SerializeField] private float timeBetweenEachSpawn =0f;
+        [SerializeField] private float spawnInterval = 1.5f;
 
+        
         private List<Transform> _enemies;
-        private int _enemyCount = 3;
-        private float _spawnInterval = 5f;
+        private int _enemyCount = 4;
 
         private Transform player;
 
@@ -40,7 +41,7 @@ namespace BLE.Gamelogic.Providers
             {
                 yield return StartCoroutine(SpawnEnemiesOneByOne(_enemyCount));
                 _enemyCount += 2;
-                yield return new WaitForSeconds(_spawnInterval);
+                yield return new WaitForSeconds(spawnInterval);
             }
         }
 

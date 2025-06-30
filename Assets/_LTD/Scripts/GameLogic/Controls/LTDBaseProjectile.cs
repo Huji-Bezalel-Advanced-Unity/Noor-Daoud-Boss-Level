@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace LTD.GameLogic.Controls
 {
-    public class LTDBaseProjectile : LTDBaseMono,ILTDBaseProjectile
+    public class LTDBaseProjectile : LTDBaseMono, ILTDBaseProjectile
     {
         [SerializeField] private float speed;
 
@@ -13,27 +13,27 @@ namespace LTD.GameLogic.Controls
         public void FlyTowardsEnemy(Transform target)
         {
             _target = target;
-            Initialize();
             StartCoroutine(FlyCoroutine());
-        }
-
-        public virtual void Initialize()
-        {
-            transform.up = _target.position - transform.position;
         }
 
         private IEnumerator FlyCoroutine()
         {
             while (_target != null)
             {
+                Vector3 direction = (_target.position - transform.position).normalized;
+                transform.up = direction; 
+                transform.position += transform.up * speed * Time.deltaTime;
+                
                 yield return null;
-                MoveStepTowardsTarget();
             }
-        }
 
-        public virtual void MoveStepTowardsTarget()
+            Destroy(gameObject);
+        }
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            transform.position += transform.up * speed * Time.deltaTime;
+       
+            Destroy(gameObject);
+            Destroy(other.gameObject);
         }
     }
 }
