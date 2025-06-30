@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using _LTD.Scripts.GameLogic.Controls;
 using LTD.Core.BaseMono;
 using LTD.Core.Managers;
 using LTD.Core.Utils;
@@ -10,8 +11,9 @@ namespace LTD.Gamelogic.Controls
     {
         [Header("References")]
         [SerializeField] private Transform target;
-
-        private float _shootCooldown = 0.5f;
+        [SerializeField] private LTDFire firePrefab ;
+        
+        private float _shootCooldown = 0.2f;
         private float _lastShootTime;
 
         private Coroutine _shootingCoroutine;
@@ -48,12 +50,11 @@ namespace LTD.Gamelogic.Controls
 
         private void StopShooting()
         {
-            // if (_shootingCoroutine != null)
-            // {
-            //     StopCoroutine(_shootingCoroutine);
-            // }
-
-            this.StopWithNullCheckCoroutine(ref _shootingCoroutine);
+             if (_shootingCoroutine != null)
+             {
+                 StopCoroutine(_shootingCoroutine);
+             }
+             this.StopWithNullCheckCoroutine(ref _shootingCoroutine);
         }
 
         #endregion
@@ -74,14 +75,14 @@ namespace LTD.Gamelogic.Controls
         }
         private IEnumerator HandleShooting()
         {
-      //      LTDBaseProjectile ltdBaseProjectile = BulletPool.Instance.Get();
-      //      if (ltdBaseProjectile != null)
+            var fire = Instantiate(firePrefab, transform.position, Quaternion.identity);
+            if (fire != null)
             {
-        //        ltdBaseProjectile.transform.position = transform.position;
+                fire.transform.position = transform.position;
                 Vector3 direction = (target.position - transform.position).normalized;
                 Debug.Log($"direction = {direction}");
 
-              //  ltdBaseProjectile.Shoot(direction, "Bullet", 10f, "BossBullet");
+                fire.Shoot(direction, 10);
                 _lastShootTime = Time.time;
 
                 yield return new WaitForSeconds(_shootCooldown);

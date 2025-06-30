@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 360590548672899351}
   - component: {fileID: 4348795412345187346}
   m_Layer: 0
-  m_Name: The eye
+  m_Name: The Boss
   m_TagString: The Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
