@@ -14,7 +14,6 @@ namespace LTD.GameLogic.Controls
         {
             _target = target;
             Initialize();
-
             StartCoroutine(FlyCoroutine());
         }
 

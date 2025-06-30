@@ -15,6 +15,7 @@ namespace LTD.GameLogic.Controls
             CheckInput();
         }
 
+        
         private void CheckInput()
         {
             var horizontal = Input.GetAxis("Horizontal");

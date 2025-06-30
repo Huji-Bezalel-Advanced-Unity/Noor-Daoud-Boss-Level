@@ -8,7 +8,7 @@ namespace LTD.Gamelogic.Controls
 {
     public class LTDBoss : LTDBaseMono
     {
-           [Header("References")]
+        [Header("References")]
         [SerializeField] private Transform target;
 
         private float _shootCooldown = 0.5f;
@@ -31,6 +31,7 @@ namespace LTD.Gamelogic.Controls
             Events.RedZone -= KeepShooting;
         }
 
+        
         #region Callbacks:
 
         private void KeepShooting()

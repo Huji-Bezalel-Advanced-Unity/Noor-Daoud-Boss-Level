@@ -3,6 +3,7 @@ using LTD.Core.BaseMono;
 using LTD.Gamelogic.Controls;
 using LTD.GameLogic.Controls;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace _LTD.Scripts.GameLogic
 {
@@ -10,7 +11,7 @@ namespace _LTD.Scripts.GameLogic
     {
         [SerializeField] private float fireRate;
         [SerializeField] private LTDBaseProjectile spell;
-        [SerializeField] private LTDEnemiesProvider enemiesProvider;
+        [FormerlySerializedAs("enemiesProvider")] [SerializeField] private LTDSmallDevilProvider smallDevilProvider;
         
         private float _timer;
         private void Update()
@@ -24,11 +25,12 @@ namespace _LTD.Scripts.GameLogic
             }   
         }
 
+        
         private void Fire()
         {
             var projectile = Instantiate(spell, transform.position, Quaternion.identity);
             
-            var enemy = enemiesProvider.GetNearestEnemy(transform.position);
+            var enemy = smallDevilProvider.GetNearestEnemy(transform.position);
 
             if (enemy == null)
             {
