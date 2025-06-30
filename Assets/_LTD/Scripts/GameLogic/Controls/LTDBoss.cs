@@ -2,12 +2,11 @@
 using LTD.Core.BaseMono;
 using LTD.Core.Managers;
 using LTD.Core.Utils;
-using Pool;
 using UnityEngine;
 
-namespace BLE.Gamelogic.Enemies
+namespace LTD.Gamelogic.Controls
 {
-    public class TheBoss : LTDBaseMono
+    public class LTDBoss : LTDBaseMono
     {
            [Header("References")]
         [SerializeField] private Transform target;
@@ -74,14 +73,14 @@ namespace BLE.Gamelogic.Enemies
         }
         private IEnumerator HandleShooting()
         {
-            Bullet bullet = BulletPool.Instance.Get();
-            if (bullet != null)
+      //      LTDBaseProjectile ltdBaseProjectile = BulletPool.Instance.Get();
+      //      if (ltdBaseProjectile != null)
             {
-                bullet.transform.position = transform.position;
+        //        ltdBaseProjectile.transform.position = transform.position;
                 Vector3 direction = (target.position - transform.position).normalized;
                 Debug.Log($"direction = {direction}");
 
-                bullet.Shoot(direction, "Bullet", 10f, "BossBullet");
+              //  ltdBaseProjectile.Shoot(direction, "Bullet", 10f, "BossBullet");
                 _lastShootTime = Time.time;
 
                 yield return new WaitForSeconds(_shootCooldown);
