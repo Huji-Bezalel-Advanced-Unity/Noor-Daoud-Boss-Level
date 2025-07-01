@@ -1,5 +1,6 @@
 ﻿using System;
 using LTD.Core.BaseMono;
+using LTD.Core.Managers;
 using UnityEngine;
 
 namespace _LTD.Scripts.GameLogic.Controls
@@ -28,7 +29,7 @@ namespace _LTD.Scripts.GameLogic.Controls
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                //TODO: player life -1.
+                Events.DecreaseHealth.Invoke();
             }
             Destroy(gameObject);
         }

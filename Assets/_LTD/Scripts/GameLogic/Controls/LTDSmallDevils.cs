@@ -1,5 +1,6 @@
 ﻿using BLE.Gamelogic.Providers;
 using LTD.Core.BaseMono;
+using LTD.Core.Managers;
 using LTD.GameLogic.Controls;
 using UnityEngine;
 
@@ -27,10 +28,9 @@ namespace _LTD.Scripts.GameLogic.Controls
         
         private void OnTriggerEnter2D(Collider2D other)
         {
-            print("Enter");
             if (other.gameObject.CompareTag("Player"))
             {
-                print("Spell triggered");
+                Events.DecreaseHealth.Invoke();
                 Destroy(gameObject);
             }
         }
