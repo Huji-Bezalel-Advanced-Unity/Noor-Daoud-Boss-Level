@@ -11,55 +11,79 @@ namespace LTD.Gamelogic.Controls
     {
         [Header("References")]
         [SerializeField] private Transform target;
-        [SerializeField] private LTDFire firePrefab ;
-        
-        private float _shootCooldown = 0.2f;
+        [SerializeField] private LTDFire firePrefab;
+
+        private float _shootCooldown = 0.5f;
         private float _lastShootTime;
 
         private Coroutine _shootingCoroutine;
+        private Coroutine _safeZoneDelayCoroutine;
 
         private void Awake()
         {
-            Events.SafeZone += StopShooting;
-            Events.RedZone += KeepShooting;
+            Events.SafeZone += OnEnterSafeZone;
+            Events.RedZone += OnExitSafeZone;
         }
+
         private void Start()
         {
-            _shootingCoroutine = StartCoroutine(HandleShootingCoroutine());
+            StartShooting();
         }
+
         private void OnDestroy()
         {
-            Events.SafeZone -= StopShooting;
-            Events.RedZone -= KeepShooting;
+            Events.SafeZone -= OnEnterSafeZone;
+            Events.RedZone -= OnExitSafeZone;
         }
 
-        
-        #region Callbacks:
+        #region Safe Zone
 
-        private void KeepShooting()
+        private void OnEnterSafeZone()
         {
-            if (_shootingCoroutine != null)
+            StopShooting();
+
+            if (_safeZoneDelayCoroutine != null)
+                StopCoroutine(_safeZoneDelayCoroutine);
+
+            _safeZoneDelayCoroutine = StartCoroutine(ResumeShootingAfterDelay(5f));
+        }
+
+        private void OnExitSafeZone()
+        {
+            if (_safeZoneDelayCoroutine != null)
             {
-                StopCoroutine(_shootingCoroutine);
+                StopCoroutine(_safeZoneDelayCoroutine);
+                _safeZoneDelayCoroutine = null;
             }
 
-            _shootingCoroutine = StartCoroutine(HandleShootingCoroutine());
-
-            this.StopAndStartCoroutine(ref _shootingCoroutine, HandleShootingCoroutine());
-        }
-
-        private void StopShooting()
-        {
-             if (_shootingCoroutine != null)
-             {
-                 StopCoroutine(_shootingCoroutine);
-             }
-             this.StopWithNullCheckCoroutine(ref _shootingCoroutine);
+            StartShooting();
         }
 
         #endregion
 
-        #region Coroutines:
+        #region Shooting Logic
+
+        private void StartShooting()
+        {
+            if (_shootingCoroutine == null)
+                _shootingCoroutine = StartCoroutine(HandleShootingCoroutine());
+        }
+
+        private void StopShooting()
+        {
+            if (_shootingCoroutine != null)
+            {
+                StopCoroutine(_shootingCoroutine);
+                _shootingCoroutine = null;
+            }
+        }
+
+        private IEnumerator ResumeShootingAfterDelay(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            _safeZoneDelayCoroutine = null;
+            StartShooting(); 
+        }
 
         private IEnumerator HandleShootingCoroutine()
         {
@@ -73,6 +97,7 @@ namespace LTD.Gamelogic.Controls
                 yield return null;
             }
         }
+
         private IEnumerator HandleShooting()
         {
             var fire = Instantiate(firePrefab, transform.position, Quaternion.identity);
@@ -80,9 +105,8 @@ namespace LTD.Gamelogic.Controls
             {
                 fire.transform.position = transform.position;
                 Vector3 direction = (target.position - transform.position).normalized;
-                Debug.Log($"direction = {direction}");
 
-                fire.Shoot(direction, 10);
+                fire.Shoot(direction, 20f);
                 _lastShootTime = Time.time;
 
                 yield return new WaitForSeconds(_shootCooldown);
@@ -90,6 +114,5 @@ namespace LTD.Gamelogic.Controls
         }
 
         #endregion
-
     }
 }

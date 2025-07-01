@@ -1,4 +1,5 @@
-﻿using LTD.Core.BaseMono;
+﻿using System;
+using LTD.Core.BaseMono;
 using UnityEngine;
 
 namespace _LTD.Scripts.GameLogic.Controls
@@ -10,6 +11,8 @@ namespace _LTD.Scripts.GameLogic.Controls
         private void Awake()
         {
             _rigidbody2D = GetComponent<Rigidbody2D>();
+            _rigidbody2D.gravityScale = 0f;
+            
         }
 
         public void Shoot(Vector3 direction, float speed)
@@ -19,10 +22,10 @@ namespace _LTD.Scripts.GameLogic.Controls
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle + 90f, Vector3.forward);
         }
-        
-        private void OnTriggerEnter2D (Collision2D other)
+
+
+        private void OnTriggerEnter2D(Collider2D other)
         {
-         
             if (other.gameObject.CompareTag("Player"))
             {
                 //TODO: player life -1.
