@@ -20,25 +20,30 @@ namespace _LTD.Scripts.GameLogic.Controls
             _currentHealth = maxHealth;
             UpdateUI();
             LTD.Core.Managers.Events.DecreasePlayerHealth += OnHealthDecreased;
-            LTD.Core.Managers.Events.PlayerDies += OnPlayerDied;
         }
 
         private void OnDestroy()
         {
             LTD.Core.Managers.Events.DecreasePlayerHealth -= OnHealthDecreased;
-            LTD.Core.Managers.Events.PlayerDies -= OnPlayerDied;
         }
 
         private void OnHealthDecreased()
         {
             _currentHealth = Mathf.Max(_currentHealth - 1, 0);
-            UpdateUI();
+            if (_currentHealth == 0)
+            {
+                OnPlayerDied();
+            }
+            else
+            {
+                UpdateUI();
+            }
         }
 
         private void OnPlayerDied()
         {
-            _currentHealth = 0; 
             UpdateUI();
+            LTD.Core.Managers.Events.PlayerDies.Invoke();
         }
 
         private void UpdateUI()
@@ -46,5 +51,5 @@ namespace _LTD.Scripts.GameLogic.Controls
             if (healthSlider != null)
                 healthSlider.value = (float)_currentHealth / maxHealth;
         }
-    }
+    } 
 }
