@@ -1,3 +1,4 @@
+using System;
 using _LTD.Scripts.GameLogic;
 using LTD.Core.BaseMono;
 using UnityEngine;
@@ -11,8 +12,13 @@ namespace LTD.GameLogic.Controls
 
         [Header("References")]
         [SerializeField] private LTDWand wand; 
-
+        [SerializeField]private Animator animator;
         private Vector3 _direction;
+
+        private void Start()
+        {
+            animator = GetComponent<Animator>();
+        }
 
         private void Update()
         {
