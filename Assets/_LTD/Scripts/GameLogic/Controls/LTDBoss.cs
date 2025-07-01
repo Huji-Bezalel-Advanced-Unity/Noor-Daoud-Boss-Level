@@ -13,7 +13,7 @@ namespace LTD.Gamelogic.Controls
         [SerializeField] private Transform target;
         [SerializeField] private LTDFire firePrefab;
 
-        private float _shootCooldown = 0.5f;
+        private float _shootCooldown = 0.3f;
         private float _lastShootTime;
 
         private Coroutine _shootingCoroutine;
@@ -45,7 +45,7 @@ namespace LTD.Gamelogic.Controls
             if (_safeZoneDelayCoroutine != null)
                 StopCoroutine(_safeZoneDelayCoroutine);
 
-            _safeZoneDelayCoroutine = StartCoroutine(ResumeShootingAfterDelay(5f));
+            _safeZoneDelayCoroutine = StartCoroutine(ResumeShootingAfterDelay(3f));
         }
 
         private void OnExitSafeZone()
@@ -106,7 +106,7 @@ namespace LTD.Gamelogic.Controls
                 fire.transform.position = transform.position;
                 Vector3 direction = (target.position - transform.position).normalized;
 
-                fire.Shoot(direction, 20f);
+                fire.Shoot(direction, 30f);
                 _lastShootTime = Time.time;
 
                 yield return new WaitForSeconds(_shootCooldown);

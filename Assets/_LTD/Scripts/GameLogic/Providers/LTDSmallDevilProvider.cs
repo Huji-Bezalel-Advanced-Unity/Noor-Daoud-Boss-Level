@@ -12,23 +12,21 @@ namespace BLE.Gamelogic.Providers
     {
         [SerializeField] private LTDSmallDevils enemeyPrefab;
         [SerializeField] private Transform[] spawnPoints;
-        [SerializeField] private float timeBetweenEachSpawn =0f;
         [SerializeField] private float spawnInterval = 1.5f;
 
-        
         private List<Transform> _enemies;
         private int _enemyCount = 4;
-
         private Transform player;
 
         private void Awake()
         {
-            var playerScript = FindObjectOfType<LTDPlayer>(); // Or your actual player script type
+            var playerScript = FindObjectOfType<LTDPlayer>();
             if (playerScript != null)
             {
                 player = playerScript.transform;
             }
         }
+
         private void Start()
         {
             _enemies = new List<Transform>();
@@ -39,35 +37,51 @@ namespace BLE.Gamelogic.Providers
         {
             while (true)
             {
-                yield return StartCoroutine(SpawnEnemiesOneByOne(_enemyCount));
+                SpawnEnemiesSimultaneously(_enemyCount);
                 _enemyCount += 2;
                 yield return new WaitForSeconds(spawnInterval);
             }
         }
 
-        private IEnumerator SpawnEnemiesOneByOne(int count)
+        private void SpawnEnemiesSimultaneously(int count)
         {
-            Vector3 spawnPos = GetClosestSpawnPointToPlayer();
+            var spawnPositions = GetTwoClosestSpawnPointsToPlayer();
 
-            for (int i = 0; i < count; i++)
+            int halfCount = count / 2;
+            int remaining = count % 2;
+
+            for (int i = 0; i < halfCount; i++)
             {
-                var enemy = Instantiate(enemeyPrefab, spawnPos, Quaternion.identity);
+                var enemy = Instantiate(enemeyPrefab, spawnPositions[0], Quaternion.identity);
                 _enemies.Add(enemy.transform);
-                yield return new WaitForSeconds(timeBetweenEachSpawn);
+            }
+
+            for (int i = 0; i < halfCount; i++)
+            {
+                var enemy = Instantiate(enemeyPrefab, spawnPositions[1], Quaternion.identity);
+                _enemies.Add(enemy.transform);
+            }
+
+            if (remaining > 0)
+            {
+                var extra = Instantiate(enemeyPrefab, spawnPositions[0], Quaternion.identity);
+                _enemies.Add(extra.transform);
             }
         }
 
-        private Vector3 GetClosestSpawnPointToPlayer()
+
+        private Vector3[] GetTwoClosestSpawnPointsToPlayer()
         {
-            if (player == null || spawnPoints == null || spawnPoints.Length == 0)
-                return Vector3.zero;
+            if (player == null || spawnPoints == null || spawnPoints.Length < 2)
+                return new[] { Vector3.zero, Vector3.zero };
 
             return spawnPoints
                 .OrderBy(point => Vector3.Distance(player.position, point.position))
-                .First()
-                .position;
+                .Take(2)
+                .Select(p => p.position)
+                .ToArray();
         }
-        
+
         public Transform GetNearestEnemy(Vector3 position)
         {
             if (_enemies == null || _enemies.Count == 0) return null;

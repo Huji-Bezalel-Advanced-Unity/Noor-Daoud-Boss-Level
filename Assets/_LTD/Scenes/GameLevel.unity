@@ -5248,6 +5248,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Small Devil Provider
       objectReference: {fileID: 0}
+    - target: {fileID: 1865479489094904915, guid: 7c70b9d9149d0aa45983fdbbba85175c, type: 3}
+      propertyPath: spawnInterval
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 3779313528377366666, guid: 7c70b9d9149d0aa45983fdbbba85175c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
