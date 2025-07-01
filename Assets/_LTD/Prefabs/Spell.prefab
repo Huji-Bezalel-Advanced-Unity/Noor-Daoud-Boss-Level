@@ -104,6 +104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  PlyerAnimator: {fileID: 0}
 --- !u!50 &-4637239488450578929
 Rigidbody2D:
   serializedVersion: 5

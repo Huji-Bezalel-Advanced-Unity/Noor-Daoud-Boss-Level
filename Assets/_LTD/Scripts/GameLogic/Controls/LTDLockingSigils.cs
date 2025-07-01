@@ -8,7 +8,7 @@ namespace _LTD.Scripts.GameLogic.Controls
     {
         [Header("Visuals")]
         [SerializeField] private SpriteRenderer spriteRenderer;
-        //[SerializeField] private Sprite activatedSprite;
+        [SerializeField] private Sprite activatedSprite;
         [SerializeField] private Color highlightColor = Color.yellow;
         [SerializeField] private Color normalColor = Color.white;
 
@@ -17,8 +17,9 @@ namespace _LTD.Scripts.GameLogic.Controls
 
         private void Update()
         {
-            if (_isPlayerNearby && !_isActivated && Input.GetKeyDown(KeyCode.L))
+            if (_isPlayerNearby && !_isActivated && Input.GetKeyDown(KeyCode.Space))
             {
+                print("Pressed Space");
                 ActivateSigil();
             }
         }
@@ -26,7 +27,7 @@ namespace _LTD.Scripts.GameLogic.Controls
         private void ActivateSigil()
         {
             _isActivated = true;
-          //  spriteRenderer.sprite = activatedSprite;
+            spriteRenderer.sprite = activatedSprite;
             spriteRenderer.color = normalColor; 
             Events.DecreaseDevilHealth?.Invoke();
         }

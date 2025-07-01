@@ -7,7 +7,9 @@ namespace _LTD.Scripts.GameLogic.Controls
 {
     public class LTDBossHealth : LTDBaseMono
     {
-       // [SerializeField] private Animator animator;
+        private static readonly int Die1 = Animator.StringToHash("Die");
+        private static readonly int Hurt = Animator.StringToHash("Hurt");
+        [SerializeField] private Animator animator;
 
         private int _currentHealth = 4;
 
@@ -24,7 +26,7 @@ namespace _LTD.Scripts.GameLogic.Controls
         private void TakeDamage()
         {
             _currentHealth--;
-      //      animator?.SetTrigger("Hurt");
+            animator?.SetTrigger(Hurt);
             if (_currentHealth <= 0)
             {
                 Die();
@@ -33,10 +35,10 @@ namespace _LTD.Scripts.GameLogic.Controls
 
         private void Die()
         {
-          //  animator?.SetTrigger("Die");
+            animator?.SetBool(Die1,true);
             Events.DevilDies?.Invoke();
 
-            Destroy(this.gameObject, 1.5f); // delay to let animation play
+            Destroy(this.gameObject, 1.5f); 
         }
     }
 }

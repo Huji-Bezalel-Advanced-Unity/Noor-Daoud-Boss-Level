@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using LTD.Core.BaseMono;
+using LTD.Core.Managers;
 using UnityEngine;
 
 namespace LTD.GameLogic.Controls
@@ -9,7 +10,6 @@ namespace LTD.GameLogic.Controls
     {
         private static readonly int Shooting = Animator.StringToHash("Shooting");
         [SerializeField] private float speed;
-        [SerializeField] private Animator PlyerAnimator;
         private Transform _target;
 
  
@@ -26,8 +26,7 @@ namespace LTD.GameLogic.Controls
                 Vector3 direction = (_target.position - transform.position).normalized;
                 transform.up = direction; 
                 transform.position += transform.up * speed * Time.deltaTime;
-                PlyerAnimator.SetTrigger(Shooting);
-
+                Events.PlayerShoot.Invoke();
                 yield return null;
             }
 

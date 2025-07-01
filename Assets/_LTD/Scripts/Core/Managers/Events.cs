@@ -10,6 +10,7 @@ namespace LTD.Core.Managers
         public static Action PlayerDies;
         public static Action DecreaseDevilHealth;
         public static Action DevilDies;
+        public static Action PlayerShoot;
         
     }
 }

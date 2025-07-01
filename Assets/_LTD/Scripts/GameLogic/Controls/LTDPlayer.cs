@@ -1,6 +1,8 @@
+
 using System;
 using _LTD.Scripts.GameLogic;
 using LTD.Core.BaseMono;
+using LTD.Core.Managers;
 using UnityEngine;
 
 namespace LTD.GameLogic.Controls
@@ -16,13 +18,29 @@ namespace LTD.GameLogic.Controls
         [Header("References")]
         [SerializeField] private LTDWand wand; 
         private Vector3 _direction;
-        
+
+        private void Start()
+        {
+            Events.PlayerShoot += ShootAnimation;
+        }
+
+        private void OnDestroy()
+        {
+            Events.PlayerShoot -= ShootAnimation;
+
+        }
+
+        private void ShootAnimation()
+        {
+            animator.SetTrigger(Shooting);
+        }
 
         private void Update()
         {
             CheckInput();
         }
 
+        
         private void CheckInput()
         {
             var horizontal = Input.GetAxis("Horizontal");
