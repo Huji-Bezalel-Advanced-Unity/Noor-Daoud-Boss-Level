@@ -6,7 +6,10 @@ namespace LTD.Core.Managers
     {
         public static  Action SafeZone;
         public static  Action RedZone;
-        public static Action DecreaseHealth;
-        public static Action Die;
+        public static Action DecreasePlayerHealth;
+        public static Action PlayerDies;
+        public static Action DecreaseDevilHealth;
+        public static Action DevilDies;
+        
     }
 }

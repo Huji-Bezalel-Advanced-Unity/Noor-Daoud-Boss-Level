@@ -30,7 +30,7 @@ namespace _LTD.Scripts.GameLogic.Controls
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                Events.DecreaseHealth.Invoke();
+                Events.DecreasePlayerHealth.Invoke();
                 Destroy(gameObject);
             }
         }

@@ -8,17 +8,17 @@ namespace _LTD.Scripts.GameLogic.Controls
         
         private void Awake()
         {
-            Events.DecreaseHealth += Decrease;
+            Events.DecreasePlayerHealth += Decrease;
         }
         private void OnDestroy()
         {
-            Events.DecreaseHealth -= Decrease;
+            Events.DecreasePlayerHealth -= Decrease;
         }
         private void Decrease()
         {
             if (_health == 0)
             {
-                Events.Die.Invoke();
+                Events.PlayerDies.Invoke();
             }
             _health -= 1;
         }

@@ -19,14 +19,14 @@ namespace _LTD.Scripts.GameLogic.Controls
         {
             _currentHealth = maxHealth;
             UpdateUI();
-            LTD.Core.Managers.Events.DecreaseHealth += OnHealthDecreased;
-            LTD.Core.Managers.Events.Die += OnPlayerDied;
+            LTD.Core.Managers.Events.DecreasePlayerHealth += OnHealthDecreased;
+            LTD.Core.Managers.Events.PlayerDies += OnPlayerDied;
         }
 
         private void OnDestroy()
         {
-            LTD.Core.Managers.Events.DecreaseHealth -= OnHealthDecreased;
-            LTD.Core.Managers.Events.Die -= OnPlayerDied;
+            LTD.Core.Managers.Events.DecreasePlayerHealth -= OnHealthDecreased;
+            LTD.Core.Managers.Events.PlayerDies -= OnPlayerDied;
         }
 
         private void OnHealthDecreased()
