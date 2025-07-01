@@ -17,7 +17,7 @@ namespace _LTD.Scripts.GameLogic.Controls
 
         private void Update()
         {
-            if (_isPlayerNearby && !_isActivated && Input.GetKeyDown(KeyCode.L))
+            if (_isPlayerNearby && !_isActivated && Input.GetKeyDown(KeyCode.Space))
             {
                 ActivateSigil();
             }

@@ -1308,8 +1308,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 118752816}
-        m_TargetAssemblyTypeName: _LTD.Scripts.GameLogic.UI.LTDDevilDefeatedUI, Assembly-CSharp
-        m_MethodName: EndGame
+        m_TargetAssemblyTypeName: _LTD.Scripts.GameLogic.UI.LTDGameOverUI, Assembly-CSharp
+        m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4306,8 +4306,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 118752816}
-        m_TargetAssemblyTypeName: _LTD.Scripts.GameLogic.UI.LTDDevilDefeatedUI, Assembly-CSharp
-        m_MethodName: EndGame
+        m_TargetAssemblyTypeName: _LTD.Scripts.GameLogic.UI.LTDGameOverUI, Assembly-CSharp
+        m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
