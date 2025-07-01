@@ -29,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 233383236979789026}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.4232569, y: -3.3595467, z: 0.24435508}
-  m_LocalScale: {x: 1.4675541, y: 1.4675541, z: 1.4675541}
+  m_LocalPosition: {x: -1.4232569, y: -3.3595467, z: 0.3307}
+  m_LocalScale: {x: 1.986044, y: 1.986044, z: 1.986044}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7796252142188658631}
@@ -153,8 +153,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.49999997
+  m_Offset: {x: 0, y: -0.010359694}
+  m_Radius: 1.228632
 --- !u!114 &4799831295148828623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,7 +168,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  wand: {fileID: 0}
+  animator: {fileID: 5749692748107192727}
+  wand: {fileID: 8305073804157039479}
 --- !u!1 &3628642462162728193
 GameObject:
   m_ObjectHideFlags: 0
@@ -306,7 +307,7 @@ Transform:
   m_GameObject: {fileID: 7482626027304724629}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.020442156, y: 0.038, z: 0}
+  m_LocalPosition: {x: 1.91, y: 0.038, z: 0}
   m_LocalScale: {x: 0.17234117, y: 0.43085292, z: 0.43085292}
   m_ConstrainProportionsScale: 0
   m_Children: []

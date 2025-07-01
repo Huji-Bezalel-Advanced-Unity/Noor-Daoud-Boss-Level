@@ -1,4 +1,5 @@
-﻿using BLE.Gamelogic.Providers;
+﻿using System.Collections;
+using BLE.Gamelogic.Providers;
 using LTD.Core.BaseMono;
 using LTD.Core.Managers;
 using LTD.GameLogic.Controls;
@@ -9,6 +10,7 @@ namespace _LTD.Scripts.GameLogic.Controls
     public class LTDSmallDevils:LTDBaseMono
     {
         [SerializeField] private float speed = 6f;
+        [SerializeField] private Animator animator;
         private LTDPlayer _player;
         
         private void Awake()
@@ -31,8 +33,16 @@ namespace _LTD.Scripts.GameLogic.Controls
             if (other.gameObject.CompareTag("Player"))
             {
                 Events.DecreasePlayerHealth.Invoke();
-                Destroy(gameObject);
+                animator.SetBool("Die", true);
+                StartCoroutine(WaitAndDestroy());
             }
         }
+
+        private IEnumerator WaitAndDestroy()
+        {
+            yield return new WaitForSeconds(0.5f); 
+            Destroy(gameObject);
+        }
+
     }
 }

@@ -8095,6 +8095,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &528117116 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5749692748107192727, guid: 761a439f8b845ff4cb770ee4c4c354cd, type: 3}
+  m_PrefabInstance: {fileID: 393439587423796275}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &530947329
 GameObject:
   m_ObjectHideFlags: 0
@@ -17312,7 +17317,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthSlider: {fileID: 667206067}
-  maxHealth: 20
+  maxHealth: 200
+  playerAnimator: {fileID: 528117116}
 --- !u!1 &1008341470
 GameObject:
   m_ObjectHideFlags: 0

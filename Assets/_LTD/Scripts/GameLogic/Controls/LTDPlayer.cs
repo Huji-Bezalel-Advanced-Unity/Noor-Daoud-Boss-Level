@@ -7,18 +7,16 @@ namespace LTD.GameLogic.Controls
 {
     public class LTDPlayer : LTDBaseMono
     {
+        private static readonly int Walk = Animator.StringToHash("Walk");
+        private static readonly int Shooting = Animator.StringToHash("Shooting");
+
         [Header("Settings")] 
         [SerializeField] private float moveSpeed = 5f;
-
+        [SerializeField] private Animator animator;
         [Header("References")]
         [SerializeField] private LTDWand wand; 
-        [SerializeField]private Animator animator;
         private Vector3 _direction;
-
-        private void Start()
-        {
-            animator = GetComponent<Animator>();
-        }
+        
 
         private void Update()
         {
@@ -34,6 +32,16 @@ namespace LTD.GameLogic.Controls
 
             transform.position += _direction * (Time.deltaTime * moveSpeed);
 
+            bool isMoving = _direction.magnitude > 0.01f;
+            if (isMoving)
+            {
+                animator.SetBool(Walk, true);
+            }
+            else
+            {
+                animator.SetBool(Walk, false);
+            }
+            
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 wand?.Fire();
