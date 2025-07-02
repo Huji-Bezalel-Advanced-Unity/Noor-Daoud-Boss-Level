@@ -2,23 +2,26 @@
 using _LTD.Scripts.GameLogic.Controls;
 using LTD.GameLogic.BaseMono;
 using LTD.GameLogic.Controls;
-using LTD.GameLogic.Utils;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace LTD.Gamelogic.Controls
 {
     public class LTDBoss : LTDBaseMono
     {
-        [Header("References")]
+
+        [Header("Target & Projectile")]
         [SerializeField] private Transform target;
         [SerializeField] private LTDFire firePrefab;
 
-        private float _shootCooldown = 0.3f;
+        [FormerlySerializedAs("_shootCooldown")]
+        [Header("Shooting Settings")]
+        [SerializeField] private float shootCooldown = 0.3f;
+        
         private float _lastShootTime;
-
         private Coroutine _shootingCoroutine;
         private Coroutine _safeZoneDelayCoroutine;
-
+        
         private void Awake()
         {
             LTDEvents.SafeZone += OnEnterSafeZone;
@@ -36,7 +39,8 @@ namespace LTD.Gamelogic.Controls
             LTDEvents.RedZone -= OnExitSafeZone;
         }
 
-        #region Safe Zone
+
+        #region Safe Zone Logic
 
         private void OnEnterSafeZone()
         {
@@ -55,8 +59,15 @@ namespace LTD.Gamelogic.Controls
                 StopCoroutine(_safeZoneDelayCoroutine);
                 _safeZoneDelayCoroutine = null;
             }
+
             StartShooting();
-            
+        }
+
+        private IEnumerator ResumeShootingAfterDelay(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            _safeZoneDelayCoroutine = null;
+            StartShooting();
         }
 
         #endregion
@@ -78,18 +89,11 @@ namespace LTD.Gamelogic.Controls
             }
         }
 
-        private IEnumerator ResumeShootingAfterDelay(float delay)
-        {
-            yield return new WaitForSeconds(delay);
-            _safeZoneDelayCoroutine = null;
-            StartShooting(); 
-        }
-
         private IEnumerator HandleShootingCoroutine()
         {
             while (true)
             {
-                if (Time.time >= _lastShootTime + _shootCooldown)
+                if (Time.time >= _lastShootTime + shootCooldown)
                 {
                     yield return HandleShooting();
                 }
@@ -101,15 +105,16 @@ namespace LTD.Gamelogic.Controls
         private IEnumerator HandleShooting()
         {
             var fire = Instantiate(firePrefab, transform.position, Quaternion.identity);
+
             if (fire != null)
             {
                 fire.transform.position = transform.position;
                 Vector3 direction = (target.position - transform.position).normalized;
-
                 fire.Shoot(direction, 30f);
+
                 _lastShootTime = Time.time;
 
-                yield return new WaitForSeconds(_shootCooldown);
+                yield return new WaitForSeconds(shootCooldown);
             }
         }
 

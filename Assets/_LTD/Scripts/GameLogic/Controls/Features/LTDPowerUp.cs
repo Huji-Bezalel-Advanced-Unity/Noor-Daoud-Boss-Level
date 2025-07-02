@@ -7,14 +7,20 @@ namespace BLE.Gamelogic.Zone
 {
     public class LTDPowerUp : LTDBaseMono
     {
+        #region Animator Keys
+
         private static readonly int Magic = Animator.StringToHash("Magic");
+
+        #endregion
 
         [Header("Power-Up Settings")]
         [SerializeField] private PowerUpType powerUpType;
+        [Header("Animation Settings")]
         [SerializeField] private Animator animator;
 
+        
         private bool _triggered = false;
-
+        
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (_triggered) return;
@@ -24,10 +30,12 @@ namespace BLE.Gamelogic.Zone
             {
                 case PowerUpType.IncreaseSpeed:
                     LTDEvents.IncreasePlayerSpeed?.Invoke();
-                    print("Increased speed");
+                    Debug.Log("Increased speed");
                     break;
+
                 case PowerUpType.IncreaseSpellPower:
                     LTDEvents.IncreaseSpellPowerUp?.Invoke();
+                    Debug.Log("Increased spell power");
                     break;
             }
 
@@ -41,13 +49,15 @@ namespace BLE.Gamelogic.Zone
                 Destroy(gameObject);
             }
         }
-
+        
         private IEnumerator DestroyAfterAnimation(Animator anim)
         {
             yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
             Destroy(gameObject);
         }
+
     }
+    
     public enum PowerUpType
     {
         IncreaseSpeed,

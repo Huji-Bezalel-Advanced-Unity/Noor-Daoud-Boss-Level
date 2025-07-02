@@ -7,25 +7,28 @@ using UnityEngine.Serialization;
 
 namespace _LTD.Scripts.GameLogic
 {
-    public class LTDWand:LTDBaseMono
+    public class LTDWand : LTDBaseMono
     {
+
+        [Header("Projectile Settings")]
         [SerializeField] private LTDBaseProjectile spell;
-        [FormerlySerializedAs("enemiesProvider")] 
+        [FormerlySerializedAs("enemiesProvider")]
         [SerializeField] private LTDSmallDevilProvider smallDevilProvider;
         
         public void Fire()
         {
             var projectile = Instantiate(spell, transform.position, Quaternion.identity);
-            
+
             var enemy = smallDevilProvider.GetNearestEnemy(transform.position);
 
             if (enemy == null)
             {
-                   Destroy(projectile.gameObject);
-                   return;
+                Destroy(projectile.gameObject);
+                return;
             }
+
             projectile.FlyTowardsEnemy(enemy);
         }
-        
+
     }
 }

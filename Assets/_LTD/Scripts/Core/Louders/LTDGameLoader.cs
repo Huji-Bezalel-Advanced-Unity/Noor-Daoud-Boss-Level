@@ -12,6 +12,8 @@ namespace LTD.GameLogic.Louders
         [Header("UI Elements")]
         [SerializeField] private Slider loadingSlider;
 
+        #region Game Initialization
+
         private void Awake()
         {
             var coreManager = new LTDCoreManager();
@@ -20,22 +22,31 @@ namespace LTD.GameLogic.Louders
                 StartCoroutine(LoadNextSceneAsync());
             });
         }
-      
-        IEnumerator LoadNextSceneAsync()
+
+        #endregion
+
+        #region Scene Loading Logic
+
+        private IEnumerator LoadNextSceneAsync()
         {
-            int gameSceneIndex = 0; 
+            int gameSceneIndex = 0;
             AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(gameSceneIndex);
+
             LTDAudioManager.Instance.PlayGameMusic();
+
             asyncLoad.allowSceneActivation = false;
-            
+
             while (asyncLoad.progress < 0.9f)
             {
                 float progress = Mathf.Clamp01(asyncLoad.progress / 0.9f);
                 loadingSlider.value = progress;
                 yield return null;
             }
+            
             loadingSlider.value = 1f;
             asyncLoad.allowSceneActivation = true;
         }
+
+        #endregion
     }
 }

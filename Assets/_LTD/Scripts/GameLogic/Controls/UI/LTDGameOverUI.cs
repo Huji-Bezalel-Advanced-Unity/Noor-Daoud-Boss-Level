@@ -8,12 +8,14 @@ namespace _LTD.Scripts.GameLogic.UI
 {
     public class LTDGameOverUI : LTDBaseMono
     {
+
         [Header("UI References")]
         [FormerlySerializedAs("playerDeathPanel")]
         [SerializeField] private GameObject losingPanel;
-        [FormerlySerializedAs("devilDefeatedPanel")] 
-        [SerializeField] private GameObject winningPanel;
 
+        [FormerlySerializedAs("devilDefeatedPanel")]
+        [SerializeField] private GameObject winningPanel;
+        
         private void Awake()
         {
             losingPanel.SetActive(false);
@@ -29,24 +31,31 @@ namespace _LTD.Scripts.GameLogic.UI
             LTDEvents.DevilDies -= ShowDevilDefeatedPanel;
         }
 
+
+        #region Game Over Logic
+        
         private void ShowPlayerDeathPanel()
         {
             losingPanel.SetActive(true);
             Time.timeScale = 0f;
         }
-
+        
         private void ShowDevilDefeatedPanel()
         {
             winningPanel.SetActive(true);
             Time.timeScale = 0f;
         }
 
+        #endregion
+
+        #region Public UI Buttons
+        
         public void RestartGame()
         {
             Time.timeScale = 1f;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
-
+        
         public void QuitGame()
         {
 #if UNITY_EDITOR
@@ -55,5 +64,7 @@ namespace _LTD.Scripts.GameLogic.UI
             Application.Quit();
 #endif
         }
+
+        #endregion
     }
 }

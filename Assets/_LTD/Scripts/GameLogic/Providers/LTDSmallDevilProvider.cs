@@ -10,13 +10,18 @@ namespace BLE.Gamelogic.Providers
 {
     public class LTDSmallDevilProvider : LTDBaseMono
     {
+        [Header("Enemy Settings")]
         [SerializeField] private LTDSmallDevils enemeyPrefab;
+
+        [Header("Spawn Settings")]
         [SerializeField] private Transform[] spawnPoints;
         [SerializeField] private float spawnInterval = 1.5f;
-
+        
         private List<Transform> _enemies;
         private int _enemyCount = 4;
         private Transform player;
+
+
 
         private void Awake()
         {
@@ -32,6 +37,9 @@ namespace BLE.Gamelogic.Providers
             _enemies = new List<Transform>();
             StartCoroutine(SpawnEnemiesLoop());
         }
+
+
+        #region Spawning Logic
 
         private IEnumerator SpawnEnemiesLoop()
         {
@@ -69,7 +77,6 @@ namespace BLE.Gamelogic.Providers
             }
         }
 
-
         private Vector3[] GetTwoClosestSpawnPointsToPlayer()
         {
             if (player == null || spawnPoints == null || spawnPoints.Length < 2)
@@ -81,6 +88,10 @@ namespace BLE.Gamelogic.Providers
                 .Select(p => p.position)
                 .ToArray();
         }
+
+        #endregion
+
+        #region Utility
 
         public Transform GetNearestEnemy(Vector3 position)
         {
@@ -94,5 +105,7 @@ namespace BLE.Gamelogic.Providers
                 .OrderBy(enemy => Vector3.Distance(position, enemy.position))
                 .FirstOrDefault();
         }
+
+        #endregion
     }
 }

@@ -7,11 +7,17 @@ namespace BLE.Gamelogic.Zone
 {
     public class SafeZone : LTDBaseMono
     {
+        #region Animator Keys
+
         private static readonly int Stop = Animator.StringToHash("Stop");
+
+        #endregion
+        
+        [Header("References")]
         [SerializeField] private Animator animator;
 
         private Coroutine _delayCoroutine;
-
+        
         private void OnTriggerEnter2D(Collider2D other)
         {
             LTDEvents.SafeZone?.Invoke();
@@ -21,7 +27,7 @@ namespace BLE.Gamelogic.Zone
 
             _delayCoroutine = StartCoroutine(DelayedAnimation());
         }
-
+        
         private void OnTriggerExit2D(Collider2D other)
         {
             LTDEvents.RedZone?.Invoke();
@@ -34,7 +40,7 @@ namespace BLE.Gamelogic.Zone
 
             animator.SetBool(Stop, false); 
         }
-
+        
         private IEnumerator DelayedAnimation()
         {
             yield return new WaitForSeconds(3f);

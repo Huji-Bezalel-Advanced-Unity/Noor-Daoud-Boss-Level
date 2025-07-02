@@ -9,7 +9,6 @@ namespace LTD.GameLogic.Controls
     {
         public static LTDSGameManager Instance { get; private set; }
         
-        
         private void Awake()
         {
             if (Instance == null)
