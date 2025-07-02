@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 3032241974121846738, guid: 831e475a492e74840b960e28a335c3dd, type: 3}
+  m_Sprite: {fileID: 8601640486741147799, guid: 4f0e1925474a21b4399868c0e4663e19, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -123,8 +123,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.00000023841858, y: 0}
-  m_Radius: 0.5
+  m_Offset: {x: 0.008695297, y: 0.0018553593}
+  m_Radius: 0.07913045
 --- !u!114 &6160930004011195289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,5 +138,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 923753777314520127}
+  activatedSprite: {fileID: -7784206539637790912, guid: 9561cc050a5092249b5e54554e643485, type: 3}
   highlightColor: {r: 0.7552158, g: 0.78867924, b: 0.21279456, a: 1}
   normalColor: {r: 1, g: 1, b: 1, a: 1}

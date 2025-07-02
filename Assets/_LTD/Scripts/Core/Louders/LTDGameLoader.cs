@@ -20,11 +20,12 @@ namespace LTD.Core.Louders
                 StartCoroutine(LoadNextSceneAsync());
             });
         }
-
+      
         IEnumerator LoadNextSceneAsync()
         {
             int gameSceneIndex = 0; 
             AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(gameSceneIndex);
+            LTDAudioManager.Instance.PlayGameMusic();
             asyncLoad.allowSceneActivation = false;
             
             while (asyncLoad.progress < 0.9f)
