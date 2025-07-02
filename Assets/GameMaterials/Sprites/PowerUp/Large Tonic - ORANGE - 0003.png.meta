@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 664a4266fc16cd64cac2736f8edc6915
+guid: 264f9c01f3a341d4993d4ad46e25f0e1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 691019964632626826
-    second: flask_yellow_0
+      213: -2388515949697549732
+    second: Large Tonic - ORANGE - 0003_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: flask_yellow_0
+      name: Large Tonic - ORANGE - 0003_0
       rect:
         serializedVersion: 2
-        x: 3
-        y: 1
-        width: 10
-        height: 13
+        x: 0
+        y: 0
+        width: 19
+        height: 37
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a8671a42ffef69900800000000000000
-      internalID: 691019964632626826
+      spriteID: c5a3ced06694aded0800000000000000
+      internalID: -2388515949697549732
       vertices: []
       indices: 
       edges: []

@@ -55,7 +55,6 @@ namespace LTD.Gamelogic.Controls
                 StopCoroutine(_safeZoneDelayCoroutine);
                 _safeZoneDelayCoroutine = null;
             }
-            LTDEvents.SafeZoneDeseaper.Invoke();
             StartShooting();
             
         }

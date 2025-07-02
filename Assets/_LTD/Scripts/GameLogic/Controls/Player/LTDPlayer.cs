@@ -17,7 +17,7 @@ namespace LTD.GameLogic.Controls
         [SerializeField] private Animator animator;
         [Header("References")]
         [SerializeField] private LTDWand wand; 
-        [SerializeField] private AudioClip spellClip; // 🎵 Drag your clip in Inspector
+       // [SerializeField] private AudioClip spellClip; 
 
         
         private Vector3 _direction;
@@ -38,6 +38,8 @@ namespace LTD.GameLogic.Controls
         private void IncreaseSpeed()
         {
             moveSpeed += 3;
+            print("IncreaseSpeed");
+            print(moveSpeed);
         }
         private void ShootAnimation()
         {
@@ -72,7 +74,7 @@ namespace LTD.GameLogic.Controls
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 wand?.Fire();
-                LTDAudioManager.Instance.PlaySFX(spellClip);
+             //   LTDAudioManager.Instance.PlaySFX(spellClip);
 
             }
         }

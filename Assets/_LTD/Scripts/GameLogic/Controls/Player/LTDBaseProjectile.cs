@@ -28,6 +28,7 @@ namespace LTD.GameLogic.Controls
         private void PowerUp()
         {
             _powerUp = true;
+          
         }
 
         public void FlyTowardsEnemy(Transform target)
@@ -69,7 +70,6 @@ namespace LTD.GameLogic.Controls
                 {
                     _damage--;
                     Destroy(other.gameObject);
-
                 }
             }
         }

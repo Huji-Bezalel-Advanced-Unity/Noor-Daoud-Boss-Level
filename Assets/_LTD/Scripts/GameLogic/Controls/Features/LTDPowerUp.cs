@@ -5,10 +5,13 @@ using UnityEngine;
 
 namespace BLE.Gamelogic.Zone
 {
-    public class LTDIncreaseSpellPower:LTDBaseMono
+    public class LTDPowerUp : LTDBaseMono
     {
+        private static readonly int Magic = Animator.StringToHash("Magic");
+
+        [Header("Power-Up Settings")]
+        [SerializeField] private PowerUpType powerUpType;
         [SerializeField] private Animator animator;
-        [SerializeField] private string triggerAnimationName = "PlayEffect";
 
         private bool _triggered = false;
 
@@ -17,11 +20,20 @@ namespace BLE.Gamelogic.Zone
             if (_triggered) return;
             _triggered = true;
 
-            LTDEvents.IncreaseSpellPowerUp?.Invoke();
+            switch (powerUpType)
+            {
+                case PowerUpType.IncreaseSpeed:
+                    LTDEvents.IncreasePlayerSpeed?.Invoke();
+                    print("Increased speed");
+                    break;
+                case PowerUpType.IncreaseSpellPower:
+                    LTDEvents.IncreaseSpellPowerUp?.Invoke();
+                    break;
+            }
 
             if (animator != null)
             {
-                animator.SetTrigger(triggerAnimationName);
+                animator.SetBool(Magic, true);
                 StartCoroutine(DestroyAfterAnimation(animator));
             }
             else
@@ -36,5 +48,9 @@ namespace BLE.Gamelogic.Zone
             Destroy(gameObject);
         }
     }
+    public enum PowerUpType
+    {
+        IncreaseSpeed,
+        IncreaseSpellPower
+    }
 }
-   
