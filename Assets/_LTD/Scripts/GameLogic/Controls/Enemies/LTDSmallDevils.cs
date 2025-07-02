@@ -15,18 +15,17 @@ namespace _LTD.Scripts.GameLogic.Controls
 
         private void Update()
         {
-            transform.up = CoreManager.GameManager.Player.transform.position - transform.position;
             transform.position += transform.up * speed * Time.deltaTime;
+
         }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.gameObject.CompareTag("Player"))
-            {
-                LTDEvents.DecreasePlayerHealth?.Invoke();
-                animator.SetBool("Die", true);
-                StartCoroutine(WaitAndDestroy());
-            }
+           
+            LTDEvents.DecreasePlayerHealth?.Invoke();
+            animator.SetBool("Die", true);
+            StartCoroutine(WaitAndDestroy());
+            
         }
 
         private IEnumerator WaitAndDestroy()

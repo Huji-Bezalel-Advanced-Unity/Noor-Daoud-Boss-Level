@@ -14,28 +14,13 @@ namespace LTD.GameLogic.Controls
         [SerializeField] private float speed;
 
         private Transform _target;
-        private bool _powerUp = false;
-        private int _damage = 2;
-        
-        private void Start()
-        {
-            LTDEvents.IncreaseSpellPowerUp += PowerUp;
-        }
-
-        private void OnDestroy()
-        {
-            LTDEvents.IncreaseSpellPowerUp -= PowerUp;
-        }
         
         public void FlyTowardsEnemy(Transform target)
         {
             _target = target;
             StartCoroutine(FlyCoroutine());
         }
-
-
-        #region Coroutines
-
+        
         private IEnumerator FlyCoroutine()
         {
             while (_target != null)
@@ -51,39 +36,13 @@ namespace LTD.GameLogic.Controls
 
             Destroy(gameObject);
         }
-
-        #endregion
-
-        #region Event Handlers
-
-        private void PowerUp()
-        {
-            _powerUp = true;
-        }
-
-        #endregion
-
-
+        
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (!_powerUp)
-            {
-                Destroy(gameObject);
-                Destroy(other.gameObject);
-            }
-            else
-            {
-                if (_damage == 0)
-                {
-                    Destroy(gameObject);
-                    Destroy(other.gameObject);
-                }
-                else
-                {
-                    _damage--;
-                    Destroy(other.gameObject);
-                }
-            }
+            Destroy(gameObject);
+            Destroy(other.gameObject);
+            
+       
         }
 
     }

@@ -17,11 +17,10 @@ namespace BLE.Gamelogic.Providers
 
         [Header("Spawn Settings")]
         [SerializeField] private Transform[] spawnPoints;
-        [SerializeField] private float spawnInterval = 1.5f;
+        [SerializeField] private float spawnInterval = 0.5f;
 
         private List<Transform> _enemies;
-        private int _enemyCount = 4;
-
+        private int _rowsToSpawn = 1;
 
         private void Awake()
         {
@@ -34,56 +33,27 @@ namespace BLE.Gamelogic.Providers
             StartCoroutine(SpawnEnemiesLoop());
         }
 
-
         #region Spawning Logic
 
         private IEnumerator SpawnEnemiesLoop()
         {
             while (true)
             {
-                SpawnEnemiesSimultaneously(_enemyCount);
-                _enemyCount += 2;
+                SpawnEnemiesInRows(8); 
                 yield return new WaitForSeconds(spawnInterval);
             }
         }
 
-        private void SpawnEnemiesSimultaneously(int count)
+        private void SpawnEnemiesInRows(int numberOfRows)
         {
-            var spawnPositions = GetTwoClosestSpawnPointsToPlayer();
-
-            int halfCount = count / 2;
-            int remaining = count % 2;
-
-            for (int i = 0; i < halfCount; i++)
+            for (int row = 0; row < numberOfRows; row++)
             {
-                var enemy = Instantiate(enemeyPrefab, spawnPositions[0], Quaternion.identity);
-                _enemies.Add(enemy.transform);
+                foreach (var spawnPoint in spawnPoints)
+                {
+                    var enemy = Instantiate(enemeyPrefab, spawnPoint.position, Quaternion.identity);
+                    _enemies.Add(enemy.transform);
+                }
             }
-
-            for (int i = 0; i < halfCount; i++)
-            {
-                var enemy = Instantiate(enemeyPrefab, spawnPositions[1], Quaternion.identity);
-                _enemies.Add(enemy.transform);
-            }
-
-            if (remaining > 0)
-            {
-                var extra = Instantiate(enemeyPrefab, spawnPositions[0], Quaternion.identity);
-                _enemies.Add(extra.transform);
-            }
-        }
-
-        private Vector3[] GetTwoClosestSpawnPointsToPlayer()
-        {
-            if (CoreManager.GameManager.Player == null || spawnPoints == null || spawnPoints.Length < 2)
-            {
-                return new[] { Vector3.zero, Vector3.zero };
-            }
-
-            return spawnPoints.OrderBy(point => Vector3.Distance(CoreManager.GameManager.Player.transform.position, point.position))
-                .Take(2)
-                .Select(p => p.position)
-                .ToArray();
         }
 
         #endregion
