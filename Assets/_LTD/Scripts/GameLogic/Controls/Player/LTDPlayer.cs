@@ -1,8 +1,8 @@
 
 using System;
 using _LTD.Scripts.GameLogic;
-using LTD.Core.BaseMono;
-using LTD.Core.Managers;
+using LTD.GameLogic.BaseMono;
+using LTD.GameLogic.Controls;
 using UnityEngine;
 
 namespace LTD.GameLogic.Controls
@@ -25,14 +25,20 @@ namespace LTD.GameLogic.Controls
         private void Start()
         {
             LTDEvents.PlayerShoot += ShootAnimation;
+            LTDEvents.IncreasePlayerSpeed += IncreaseSpeed;
+            
         }
-
+        
         private void OnDestroy()
         {
             LTDEvents.PlayerShoot -= ShootAnimation;
+            LTDEvents.IncreasePlayerSpeed -= IncreaseSpeed;
 
         }
-
+        private void IncreaseSpeed()
+        {
+            moveSpeed += 3;
+        }
         private void ShootAnimation()
         {
             animator.SetTrigger(Shooting);

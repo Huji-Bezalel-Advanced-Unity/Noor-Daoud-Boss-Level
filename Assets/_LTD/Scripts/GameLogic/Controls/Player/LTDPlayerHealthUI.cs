@@ -1,4 +1,4 @@
-﻿using LTD.Core.BaseMono;
+﻿using LTD.GameLogic.BaseMono;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,12 +22,12 @@ namespace _LTD.Scripts.GameLogic.Controls
         {
             _currentHealth = maxHealth;
             UpdateUI();
-            LTD.Core.Managers.LTDEvents.DecreasePlayerHealth += OnHealthDecreased;
+            LTD.GameLogic.Controls.LTDEvents.DecreasePlayerHealth += OnHealthDecreased;
         }
 
         private void OnDestroy()
         {
-            LTD.Core.Managers.LTDEvents.DecreasePlayerHealth -= OnHealthDecreased;
+            LTD.GameLogic.Controls.LTDEvents.DecreasePlayerHealth -= OnHealthDecreased;
         }
 
         private void OnHealthDecreased()
@@ -48,7 +48,7 @@ namespace _LTD.Scripts.GameLogic.Controls
         {
             UpdateUI();
             playerAnimator.SetBool(Die,true);
-            LTD.Core.Managers.LTDEvents.PlayerDies.Invoke();
+            LTD.GameLogic.Controls.LTDEvents.PlayerDies.Invoke();
         }
 
         private void UpdateUI()

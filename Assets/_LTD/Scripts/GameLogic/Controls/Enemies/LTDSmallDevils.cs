@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using BLE.Gamelogic.Providers;
-using LTD.Core.BaseMono;
-using LTD.Core.Managers;
+using LTD.GameLogic.BaseMono;
 using LTD.GameLogic.Controls;
 using UnityEngine;
 

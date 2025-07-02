@@ -1,11 +1,11 @@
 ﻿using System.Collections;
-using LTD.Core.BaseMono;
-using LTD.Core.Managers;
+using LTD.GameLogic.BaseMono;
+using LTD.GameLogic.Controls;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-namespace LTD.Core.Louders
+namespace LTD.GameLogic.Louders
 {
     public class LTDGameLoader : LTDBaseMono
     {

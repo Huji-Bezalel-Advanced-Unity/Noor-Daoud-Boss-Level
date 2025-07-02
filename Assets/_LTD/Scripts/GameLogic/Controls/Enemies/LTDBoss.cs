@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using _LTD.Scripts.GameLogic.Controls;
-using LTD.Core.BaseMono;
-using LTD.Core.Managers;
-using LTD.Core.Utils;
+using LTD.GameLogic.BaseMono;
+using LTD.GameLogic.Controls;
+using LTD.GameLogic.Utils;
 using UnityEngine;
 
 namespace LTD.Gamelogic.Controls

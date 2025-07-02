@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using LTD.Core.BaseMono;
+using LTD.GameLogic.BaseMono;
 using UnityEngine;
 using _LTD.Scripts.GameLogic.Controls;
 using LTD.GameLogic.Controls;

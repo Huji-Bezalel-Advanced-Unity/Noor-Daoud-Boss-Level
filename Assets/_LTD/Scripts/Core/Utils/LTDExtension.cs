@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace LTD.Core.Utils
+namespace LTD.GameLogic.Utils
 {
     public static class LTDExtension
     {

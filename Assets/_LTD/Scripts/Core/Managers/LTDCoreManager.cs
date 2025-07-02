@@ -2,7 +2,7 @@
 using System;
 using UnityEngine;
 
-namespace LTD.Core.Managers
+namespace LTD.GameLogic.Controls
 {
     public class LTDCoreManager
     {

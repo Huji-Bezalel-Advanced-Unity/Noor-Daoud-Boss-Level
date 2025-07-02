@@ -1,5 +1,5 @@
-﻿using LTD.Core.Managers;
-using LTD.Core.BaseMono;
+﻿using LTD.GameLogic.Controls;
+using LTD.GameLogic.BaseMono;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;

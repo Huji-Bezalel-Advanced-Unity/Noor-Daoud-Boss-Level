@@ -1,9 +1,9 @@
 ﻿
 using System;
-using LTD.Core.BaseMono;
+using LTD.GameLogic.BaseMono;
 using UnityEngine;
 
-namespace LTD.Core.Managers
+namespace LTD.GameLogic.Controls
 {
     public class LTDSGameManager:LTDBaseMono
     {

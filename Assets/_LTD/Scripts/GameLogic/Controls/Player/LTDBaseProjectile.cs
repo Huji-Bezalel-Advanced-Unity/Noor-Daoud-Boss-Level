@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
-using LTD.Core.BaseMono;
-using LTD.Core.Managers;
+using LTD.GameLogic.BaseMono;
+using LTD.GameLogic.Controls;
 using UnityEngine;
 
 namespace LTD.GameLogic.Controls
@@ -11,8 +11,25 @@ namespace LTD.GameLogic.Controls
         private static readonly int Shooting = Animator.StringToHash("Shooting");
         [SerializeField] private float speed;
         private Transform _target;
+        private bool _powerUp = false;
+        private int _damage = 2;
+        
+        private void Start()
+        {
+            LTDEvents.IncreaseSpellPowerUp += PowerUp;
+        }
 
- 
+        private void OnDestroy()
+        {
+            LTDEvents.IncreaseSpellPowerUp -= PowerUp;
+
+        }
+
+        private void PowerUp()
+        {
+            _powerUp = true;
+        }
+
         public void FlyTowardsEnemy(Transform target)
         {
             _target = target;
@@ -34,9 +51,27 @@ namespace LTD.GameLogic.Controls
         }
         private void OnTriggerEnter2D(Collider2D other)
         {
-       
-            Destroy(gameObject);
-            Destroy(other.gameObject);
+
+            if (!_powerUp)
+            {
+                Destroy(gameObject);
+                Destroy(other.gameObject);
+            }
+            else
+            {
+                if (_damage == 0)
+                {
+                    Destroy(gameObject);
+                    Destroy(other.gameObject);
+                    
+                }
+                else
+                {
+                    _damage--;
+                    Destroy(other.gameObject);
+
+                }
+            }
         }
     }
 }

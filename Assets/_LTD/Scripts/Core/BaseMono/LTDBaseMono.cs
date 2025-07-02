@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace LTD.Core.BaseMono
+namespace LTD.GameLogic.BaseMono
 {
     public class LTDBaseMono: MonoBehaviour
     {

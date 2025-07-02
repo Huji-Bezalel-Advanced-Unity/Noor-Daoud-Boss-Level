@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LTD.Core.Managers
+namespace LTD.GameLogic.Controls
 {
     public class LTDEvents
     {
@@ -12,7 +12,8 @@ namespace LTD.Core.Managers
         public static Action DevilDies;
         public static Action PlayerShoot;
         public static Action SafeZoneDeseaper;
-        
+        public static Action IncreasePlayerSpeed;
+        public static Action IncreaseSpellPowerUp;
         
     }
 }

@@ -1,5 +1,5 @@
 ﻿using BLE.Gamelogic.Providers;
-using LTD.Core.BaseMono;
+using LTD.GameLogic.BaseMono;
 using LTD.Gamelogic.Controls;
 using LTD.GameLogic.Controls;
 using UnityEngine;
