@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3311822595334979640}
   - component: {fileID: 917782622124593084}
   m_Layer: 0
-  m_Name: SpellPowerUp
+  m_Name: Healing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -104,6 +104,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerUpType: 1
   animator: {fileID: 1522213978549444399}
+  shieldPrefab: {fileID: 6125148591072949497, guid: 379ba6aaba748af4095a21a79a711b66, type: 3}
 --- !u!58 &917782622124593084
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -217,7 +218,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3680092662403455891, guid: efd19a5eb2f11bb4bb476d80f5024e96, type: 3}
+  m_Sprite: {fileID: 3609989977211135362, guid: b80a1762352e7e145a45cb2c68a846b9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

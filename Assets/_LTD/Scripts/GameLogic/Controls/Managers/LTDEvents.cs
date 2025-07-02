@@ -1,4 +1,5 @@
 ﻿using System;
+using _LTD.Scripts.GameLogic.Controls.Player;
 
 namespace LTD.GameLogic.Controls
 {
@@ -14,6 +15,7 @@ namespace LTD.GameLogic.Controls
         public static Action DevilDies;
         public static Action PlayerShoot;
         public static Action IncreasePlayerSpeed;
+        
         
     }
 }
