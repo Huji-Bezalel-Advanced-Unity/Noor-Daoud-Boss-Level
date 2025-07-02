@@ -12,10 +12,10 @@ EditorBuildSettings:
     path: Assets/_LTD/Scenes/Loading.unity
     guid: 5bd60e2f4d5c27d4ea13d8bf7291dec0
   - enabled: 1
-    path: Assets/_LTD/Scenes/Loading 1.unity
+    path: Assets/_LTD/Scenes/Loading.unity
     guid: 25b93ca064358d14097e05b74b3feae4
   - enabled: 1
-    path: Assets/_LTD/Scenes/GameLevel 1.unity
+    path: Assets/_LTD/Scenes/GameLevel.unity
     guid: f3e72999dd80e2245941a15cd5a8b060
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
