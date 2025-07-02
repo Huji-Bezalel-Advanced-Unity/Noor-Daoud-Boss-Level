@@ -76,18 +76,34 @@ namespace BLE.Gamelogic.Providers
 
         #region Utility
 
-        public Transform GetNearestEnemy(Vector3 position)
+        public Transform GetNearestEnemy(Vector3 playerPosition, Vector3 playerForward, float maxAngleDegrees = 90f)
         {
             if (_enemies == null || _enemies.Count == 0) return null;
 
-            _enemies = _enemies
-                .Where(enemy => enemy != null)
-                .ToList();
+            _enemies = _enemies.Where(e => e != null).ToList();
 
-            return _enemies
-                .OrderBy(enemy => Vector3.Distance(position, enemy.position))
-                .FirstOrDefault();
+            Transform nearest = null;
+            float closestDistance = float.MaxValue;
+
+            foreach (var enemy in _enemies)
+            {
+                Vector3 toEnemy = (enemy.position - playerPosition).normalized;
+                float angle = Vector3.Angle(playerForward, toEnemy);
+
+                if (angle <= maxAngleDegrees)
+                {
+                    float distance = Vector3.Distance(playerPosition, enemy.position);
+                    if (distance < closestDistance)
+                    {
+                        closestDistance = distance;
+                        nearest = enemy;
+                    }
+                }
+            }
+
+            return nearest;
         }
+
 
         #endregion
     }

@@ -72,7 +72,6 @@ namespace LTD.GameLogic.Controls
             _direction = new Vector3(horizontal, vertical, 0).normalized;
             transform.position += _direction * (Time.deltaTime * moveSpeed);
 
-            // Flip character based on horizontal direction
             if (horizontal != 0 && horizontal != _lastHorizontal)
             {
                 Vector3 scale = Animator.transform.localScale;
@@ -97,15 +96,10 @@ namespace LTD.GameLogic.Controls
                 {
                     wand.transform.localPosition = _originalWandLocalPosition;
                 }
-                
+                wand?.Fire();
                 ShootAnimation();
             }
             
-        }
-        public void ShootSpell()
-        {
-            Vector3 shootDirection = _lastHorizontal < 0 ? Vector3.left : Vector3.right;
-            wand?.Fire(shootDirection);
         }
 
         #endregion

@@ -33,9 +33,9 @@ namespace BLE.Gamelogic.Zone
                     Debug.Log("Increased speed");
                     break;
 
-                case PowerUpType.IncreaseSpellPower:
-                    LTDEvents.IncreaseSpellPowerUp?.Invoke();
-                    Debug.Log("Increased spell power");
+                case PowerUpType.IncreaseHealth:
+                    LTDEvents.IncreasePlayerHealth?.Invoke();
+                    Debug.Log("Increased Health");
                     break;
             }
 
@@ -61,6 +61,6 @@ namespace BLE.Gamelogic.Zone
     public enum PowerUpType
     {
         IncreaseSpeed,
-        IncreaseSpellPower
+        IncreaseHealth
     }
 }

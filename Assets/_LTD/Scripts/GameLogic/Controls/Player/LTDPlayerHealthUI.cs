@@ -28,16 +28,28 @@ namespace _LTD.Scripts.GameLogic.Controls
             _currentHealth = maxHealth;
             UpdateUI();
             LTD.GameLogic.Controls.LTDEvents.DecreasePlayerHealth += OnHealthDecreased;
+            LTD.GameLogic.Controls.LTDEvents.IncreasePlayerHealth += OnHealthIncreased;
+            
         }
+
+       
 
         private void OnDestroy()
         {
             LTD.GameLogic.Controls.LTDEvents.DecreasePlayerHealth -= OnHealthDecreased;
+            LTD.GameLogic.Controls.LTDEvents.IncreasePlayerHealth -= OnHealthIncreased;
+
         }
 
 
         #region Health Handling
 
+        private void OnHealthIncreased()
+        {
+            _currentHealth = Mathf.Max(_currentHealth + 3, 0);
+            UpdateUI();
+            print("Health Increased");
+        }
         private void OnHealthDecreased()
         {
             CoreManager.GameManager.Player.Animator.SetTrigger(Hurt);

@@ -6,32 +6,50 @@ using UnityEngine;
 
 namespace LTD.GameLogic.Controls
 {
-    public class LTDBaseProjectile : LTDBaseMono
+    public class LTDBaseProjectile : LTDBaseMono, ILTDBaseProjectile
     {
+
+        private static readonly int Shooting = Animator.StringToHash("Shooting");
         [Header("Projectile Settings")]
         [SerializeField] private float speed;
 
-        private Vector3 _moveDirection;
-
-        public void LaunchInDirection(Vector3 direction)
+        private Transform _target;
+        
+        
+        public void FlyTowardsEnemy(Transform target)
         {
-            _moveDirection = direction.normalized;
-            transform.up = _moveDirection;
+            _target = target;
+            StartCoroutine(FlyCoroutine());
         }
 
-        private void Update()
+
+        #region Coroutines
+
+        private IEnumerator FlyCoroutine()
         {
-            if (_moveDirection != Vector3.zero)
+            while (_target != null)
             {
-                transform.position += _moveDirection * speed * Time.deltaTime;
-                LTDEvents.PlayerShoot?.Invoke();
+                Vector3 direction = (_target.position - transform.position).normalized;
+                transform.up = direction;
+                transform.position += transform.up * speed * Time.deltaTime;
+
+                LTDEvents.PlayerShoot.Invoke();
+
+                yield return null;
             }
+
+            Destroy(gameObject);
         }
 
+        #endregion
+        
         private void OnTriggerEnter2D(Collider2D other)
         {
+
             Destroy(gameObject);
             Destroy(other.gameObject);
+
         }
+
     }
 }
