@@ -1,32 +1,18 @@
-﻿using BLE.Gamelogic.Providers;
-using LTD.GameLogic.BaseMono;
-using LTD.Gamelogic.Controls;
+﻿using LTD.GameLogic.BaseMono;
 using LTD.GameLogic.Controls;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace _LTD.Scripts.GameLogic
 {
     public class LTDWand : LTDBaseMono
     {
-
         [Header("Projectile Settings")]
         [SerializeField] private LTDBaseProjectile spell;
 
-        public void Fire()
+        public void Fire(Vector3 direction)
         {
             var projectile = Instantiate(spell, transform.position, Quaternion.identity);
-
-            var enemy = LTDSmallDevilProvider.Instance.GetNearestEnemy(transform.position);
-
-            if (enemy == null)
-            {
-                Destroy(projectile.gameObject);
-                return;
-            }
-
-            projectile.FlyTowardsEnemy(enemy);
+            projectile.LaunchInDirection(direction);
         }
-
     }
 }
