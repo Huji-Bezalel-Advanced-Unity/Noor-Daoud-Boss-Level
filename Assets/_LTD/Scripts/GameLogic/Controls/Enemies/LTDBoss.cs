@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using _LTD.Scripts.GameLogic.Controls;
+using LTD.Core.Utils;
 using LTD.GameLogic.BaseMono;
 using LTD.GameLogic.Controls;
 using UnityEngine;
@@ -11,17 +12,16 @@ namespace LTD.Gamelogic.Controls
     {
 
         [Header("Target & Projectile")]
-        [SerializeField] private Transform target;
         [SerializeField] private LTDFire firePrefab;
 
         [FormerlySerializedAs("_shootCooldown")]
-        [Header("Shooting Settings")]
-        [SerializeField] private float shootCooldown = 0.3f;
-        
+        // [Header("Shooting Settings")]
+        private float shootCooldown = 1;
+
         private float _lastShootTime;
         private Coroutine _shootingCoroutine;
         private Coroutine _safeZoneDelayCoroutine;
-        
+
         private void Awake()
         {
             LTDEvents.SafeZone += OnEnterSafeZone;
@@ -46,10 +46,7 @@ namespace LTD.Gamelogic.Controls
         {
             StopShooting();
 
-            if (_safeZoneDelayCoroutine != null)
-                StopCoroutine(_safeZoneDelayCoroutine);
-
-            _safeZoneDelayCoroutine = StartCoroutine(ResumeShootingAfterDelay(3f));
+            this.StopAndStartCoroutine(ref _safeZoneDelayCoroutine, ResumeShootingAfterDelay(3f));
         }
 
         private void OnExitSafeZone()
@@ -76,17 +73,12 @@ namespace LTD.Gamelogic.Controls
 
         private void StartShooting()
         {
-            if (_shootingCoroutine == null)
-                _shootingCoroutine = StartCoroutine(HandleShootingCoroutine());
+            this.StopAndStartCoroutine(ref _shootingCoroutine, HandleShootingCoroutine());
         }
 
         private void StopShooting()
         {
-            if (_shootingCoroutine != null)
-            {
-                StopCoroutine(_shootingCoroutine);
-                _shootingCoroutine = null;
-            }
+            this.StopWithNullifyCoroutine(ref _shootingCoroutine);
         }
 
         private IEnumerator HandleShootingCoroutine()
@@ -102,20 +94,52 @@ namespace LTD.Gamelogic.Controls
             }
         }
 
+        // private IEnumerator HandleShooting()
+        // {
+        //     var fire = Instantiate(firePrefab, transform.position, Quaternion.identity);
+        //     if (fire != null)
+        //     {
+        //         fire.transform.position = transform.position;
+        //         Vector3 direction = (CoreManager.GameManager.Player.transform.position - transform.position).normalized;
+        //         fire.Shoot(direction, 30f);
+
+        //         _lastShootTime = Time.time;
+
+        //         yield return new WaitForSeconds(shootCooldown);
+        //     }
+        // }
+
         private IEnumerator HandleShooting()
         {
-            var fire = Instantiate(firePrefab, transform.position, Quaternion.identity);
+            _lastShootTime = Time.time;
 
-            if (fire != null)
+            int horizontalAmount = 6;
+            float angleStep = 360f / horizontalAmount;
+            int centerIndex = horizontalAmount / 2;
+
+            for (int i = 0; i < horizontalAmount; i++)
             {
-                fire.transform.position = transform.position;
-                Vector3 direction = (target.position - transform.position).normalized;
-                fire.Shoot(direction, 30f);
+                var fire = Instantiate(firePrefab, transform.position, Quaternion.identity);
+                if (fire != null)
+                {
+                    fire.transform.position = transform.position;
 
-                _lastShootTime = Time.time;
+                    Vector3 baseDirection = (CoreManager.GameManager.Player.transform.position - transform.position).normalized;
 
-                yield return new WaitForSeconds(shootCooldown);
+                    int offsetFromCenter = i - centerIndex;
+                    float spreadAngle = offsetFromCenter * angleStep;
+                    Vector3 rotatedDirection = Quaternion.Euler(0, 0, spreadAngle) * baseDirection;
+                    float angle = Mathf.Atan2(rotatedDirection.y, rotatedDirection.x) * Mathf.Rad2Deg;
+                    fire.transform.rotation = Quaternion.Euler(0, 0, angle);
+                    float projectileSpeed = 5;
+                    fire.Shoot(rotatedDirection, projectileSpeed);
+                }
+
+                yield return new WaitForSeconds(0.05f);
             }
+
+            yield return new WaitForSeconds(shootCooldown);
+
         }
 
         #endregion

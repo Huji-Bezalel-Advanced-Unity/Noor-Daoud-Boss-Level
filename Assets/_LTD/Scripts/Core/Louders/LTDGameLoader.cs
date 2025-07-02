@@ -10,14 +10,29 @@ namespace LTD.GameLogic.Louders
     public class LTDGameLoader : LTDBaseMono
     {
         [Header("UI Elements")]
+        [SerializeField] private Button _startButton;
+        [SerializeField] private Image _imageSlider;
         [SerializeField] private Slider loadingSlider;
+        private Coroutine _sliderCoroutine;
 
         #region Game Initialization
 
         private void Awake()
         {
+            _startButton.gameObject.SetActive(false);
+            _imageSlider.gameObject.SetActive(true);
+
             var coreManager = new LTDCoreManager();
             coreManager.LoadManagers(() =>
+            {
+                ChangeValueOverTime(ref _sliderCoroutine, 0f, 1f, 0.4f, applyValue => _imageSlider.fillAmount = applyValue, () =>
+                {
+                    _imageSlider.gameObject.SetActive(false);
+                    _startButton.gameObject.SetActive(true);
+                });
+            });
+
+            _startButton.onClick.AddListener(() =>
             {
                 StartCoroutine(LoadNextSceneAsync());
             });
@@ -29,10 +44,10 @@ namespace LTD.GameLogic.Louders
 
         private IEnumerator LoadNextSceneAsync()
         {
-            int gameSceneIndex = 0;
+            int gameSceneIndex = 1;
             AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(gameSceneIndex);
 
-            LTDAudioManager.Instance.PlayGameMusic();
+            // LTDAudioManager.Instance.PlayGameMusic();
 
             asyncLoad.allowSceneActivation = false;
 
@@ -42,7 +57,7 @@ namespace LTD.GameLogic.Louders
                 loadingSlider.value = progress;
                 yield return null;
             }
-            
+
             loadingSlider.value = 1f;
             asyncLoad.allowSceneActivation = true;
         }

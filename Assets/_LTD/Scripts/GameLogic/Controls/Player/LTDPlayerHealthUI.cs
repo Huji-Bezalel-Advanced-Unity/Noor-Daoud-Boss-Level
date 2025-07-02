@@ -13,16 +13,16 @@ namespace _LTD.Scripts.GameLogic.Controls
         private static readonly int Die = Animator.StringToHash("Die");
 
         #endregion
-        
+
         [Header("UI Elements")]
         [SerializeField] private Slider healthSlider;
 
         [Header("Settings")]
         [SerializeField] private int maxHealth = 200;
-        [SerializeField] private Animator playerAnimator;
-        
+        private Animator playerAnimator;
+
         private int _currentHealth;
-        
+
         private void Awake()
         {
             _currentHealth = maxHealth;
@@ -40,7 +40,7 @@ namespace _LTD.Scripts.GameLogic.Controls
 
         private void OnHealthDecreased()
         {
-            playerAnimator.SetTrigger(Hurt);
+            CoreManager.GameManager.Player.Animator.SetTrigger(Hurt);
 
             _currentHealth = Mathf.Max(_currentHealth - 1, 0);
 
@@ -57,7 +57,7 @@ namespace _LTD.Scripts.GameLogic.Controls
         private void OnPlayerDied()
         {
             UpdateUI();
-            playerAnimator.SetBool(Die, true);
+            CoreManager.GameManager.Player.Animator.SetBool(Die, true);
             LTD.GameLogic.Controls.LTDEvents.PlayerDies?.Invoke();
         }
 

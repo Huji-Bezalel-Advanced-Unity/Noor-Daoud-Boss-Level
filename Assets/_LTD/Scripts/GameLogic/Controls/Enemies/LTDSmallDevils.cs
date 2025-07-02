@@ -13,19 +13,9 @@ namespace _LTD.Scripts.GameLogic.Controls
         [Header("Visuals")]
         [SerializeField] private Animator animator;
 
-        private LTDPlayer _player;
-
-        
-        private void Awake()
-        {
-            _player = FindAnyObjectByType<LTDPlayer>();
-        }
-
         private void Update()
         {
-            if (_player == null) return;
-
-            transform.up = _player.transform.position - transform.position;
+            transform.up = CoreManager.GameManager.Player.transform.position - transform.position;
             transform.position += transform.up * speed * Time.deltaTime;
         }
 
@@ -38,7 +28,7 @@ namespace _LTD.Scripts.GameLogic.Controls
                 StartCoroutine(WaitAndDestroy());
             }
         }
-        
+
         private IEnumerator WaitAndDestroy()
         {
             yield return new WaitForSeconds(0.5f);

@@ -12,14 +12,12 @@ namespace _LTD.Scripts.GameLogic
 
         [Header("Projectile Settings")]
         [SerializeField] private LTDBaseProjectile spell;
-        [FormerlySerializedAs("enemiesProvider")]
-        [SerializeField] private LTDSmallDevilProvider smallDevilProvider;
-        
+
         public void Fire()
         {
             var projectile = Instantiate(spell, transform.position, Quaternion.identity);
 
-            var enemy = smallDevilProvider.GetNearestEnemy(transform.position);
+            var enemy = LTDSmallDevilProvider.Instance.GetNearestEnemy(transform.position);
 
             if (enemy == null)
             {

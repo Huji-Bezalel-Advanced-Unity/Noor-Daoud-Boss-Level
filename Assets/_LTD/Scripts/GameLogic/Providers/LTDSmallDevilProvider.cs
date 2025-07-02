@@ -10,26 +10,22 @@ namespace BLE.Gamelogic.Providers
 {
     public class LTDSmallDevilProvider : LTDBaseMono
     {
+        public static LTDSmallDevilProvider Instance { get; private set; }
+
         [Header("Enemy Settings")]
         [SerializeField] private LTDSmallDevils enemeyPrefab;
 
         [Header("Spawn Settings")]
         [SerializeField] private Transform[] spawnPoints;
         [SerializeField] private float spawnInterval = 1.5f;
-        
+
         private List<Transform> _enemies;
         private int _enemyCount = 4;
-        private Transform player;
-
 
 
         private void Awake()
         {
-            var playerScript = FindObjectOfType<LTDPlayer>();
-            if (playerScript != null)
-            {
-                player = playerScript.transform;
-            }
+            Instance = this;
         }
 
         private void Start()
@@ -79,11 +75,12 @@ namespace BLE.Gamelogic.Providers
 
         private Vector3[] GetTwoClosestSpawnPointsToPlayer()
         {
-            if (player == null || spawnPoints == null || spawnPoints.Length < 2)
+            if (CoreManager.GameManager.Player == null || spawnPoints == null || spawnPoints.Length < 2)
+            {
                 return new[] { Vector3.zero, Vector3.zero };
+            }
 
-            return spawnPoints
-                .OrderBy(point => Vector3.Distance(player.position, point.position))
+            return spawnPoints.OrderBy(point => Vector3.Distance(CoreManager.GameManager.Player.transform.position, point.position))
                 .Take(2)
                 .Select(p => p.position)
                 .ToArray();

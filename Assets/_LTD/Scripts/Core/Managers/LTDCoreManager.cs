@@ -1,18 +1,19 @@
 ﻿using System;
 using UnityEngine;
 
-namespace LTD.GameLogic.Controls
+namespace LTD.GameLogic
 {
     public class LTDCoreManager
     {
 
         public static LTDCoreManager Instance { get; private set; }
+        public LTDGameManager GameManager;
 
         public LTDCoreManager()
         {
             Instance = this;
         }
-        
+
         #region Core Manager Loading
 
         public void LoadManagers(Action onComplete)
@@ -20,8 +21,10 @@ namespace LTD.GameLogic.Controls
             Debug.Log("InitCoreManagers started.");
 
             GameObject temp = new GameObject("MonoManager");
-            temp.AddComponent<LTDSGameManager>();
+            temp.AddComponent<LTDMonoManager>();
             Debug.Log("MonoManager GameObject created");
+
+            GameManager = new();
 
             onComplete?.Invoke();
         }

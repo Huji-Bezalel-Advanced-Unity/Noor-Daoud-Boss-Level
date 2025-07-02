@@ -52,6 +52,6 @@ namespace LTD.GameLogic.Controls
                 sfxSource.PlayOneShot(clip);
             }
         }
-        
+
     }
 }

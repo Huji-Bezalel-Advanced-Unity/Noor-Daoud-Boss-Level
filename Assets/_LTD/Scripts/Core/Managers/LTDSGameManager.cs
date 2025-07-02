@@ -1,22 +1,36 @@
-﻿
-using System;
-using LTD.GameLogic.BaseMono;
+﻿using LTD.Gamelogic.Controls;
+using LTD.GameLogic.Controls;
 using UnityEngine;
 
-namespace LTD.GameLogic.Controls
+namespace LTD.GameLogic
 {
-    public class LTDSGameManager:LTDBaseMono
+    public class LTDGameManager
     {
-        public static LTDSGameManager Instance { get; private set; }
-        
-        private void Awake()
+        public LTDPlayer _playerPrefab;
+        private Vector3 _spawnPosition = new Vector3(1f, -11f, 0.244f);
+        public LTDPlayer Player { get; private set; }
+
+
+
+        public LTDBoss _bossPrefab;
+        private Vector3 _bossSpawnPosition = new Vector3(2, 0f, 0.244F);
+        public LTDBoss Boss { get; private set; }
+
+
+        public LTDGameManager()
         {
-            if (Instance == null)
-            {
-                Instance = this;
-                DontDestroyOnLoad(gameObject);
-            }
+            _playerPrefab = Resources.Load<LTDPlayer>("PlayerPrefab");
+            _bossPrefab = Resources.Load<LTDBoss>("BossPrefab");
         }
-        
+
+        public void InstantiatePlayer()
+        {
+            Player = UnityEngine.Object.Instantiate(_playerPrefab, _spawnPosition, Quaternion.identity);
+        }
+        public void InstantiateBoss()
+        {
+            Boss = UnityEngine.Object.Instantiate(_bossPrefab);
+            Boss.transform.position = _bossSpawnPosition;
+        }
     }
 }

@@ -1,7 +1,6 @@
 using System;
 using _LTD.Scripts.GameLogic;
 using LTD.GameLogic.BaseMono;
-using LTD.GameLogic.Controls;
 using UnityEngine;
 
 namespace LTD.GameLogic.Controls
@@ -14,16 +13,16 @@ namespace LTD.GameLogic.Controls
         private static readonly int Shooting = Animator.StringToHash("Shooting");
 
         #endregion
-        
+
         [Header("Settings")]
         [SerializeField] private float moveSpeed = 5f;
 
         [Header("References")]
-        [SerializeField] private Animator animator;
         [SerializeField] private LTDWand wand;
-        // [SerializeField] private AudioClip spellClip;
-        
+        [field: SerializeField] public Animator Animator { get; private set; }
+
         private Vector3 _direction;
+        private float _lastHorizontal = 1f;
 
         private void Start()
         {
@@ -42,24 +41,36 @@ namespace LTD.GameLogic.Controls
             CheckInput();
         }
 
-
         #region Input Handling
 
         private void CheckInput()
         {
-            float horizontal = Input.GetAxis("Horizontal");
-            float vertical = Input.GetAxis("Vertical");
+            float horizontal = 0f;
+
+            if (Input.GetKey(KeyCode.LeftArrow))
+                horizontal = -1f;
+            else if (Input.GetKey(KeyCode.RightArrow))
+                horizontal = 1f;
+
+            float vertical = Input.GetAxisRaw("Vertical");
 
             _direction = new Vector3(horizontal, vertical, 0).normalized;
             transform.position += _direction * (Time.deltaTime * moveSpeed);
 
-            bool isMoving = _direction.magnitude > 0.01f;
-            animator.SetBool(Walk, isMoving);
+            // Flip character based on horizontal direction
+            if (horizontal != 0 && horizontal != _lastHorizontal)
+            {
+                Vector3 scale = Animator.transform.localScale;
+                scale.x = Mathf.Abs(scale.x) * (horizontal > 0 ? 1 : -1);
+                Animator.transform.localScale = scale;
+                _lastHorizontal = horizontal;
+            }
+
+            Animator.SetBool(Walk, _direction.magnitude > 0.01f);
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 wand?.Fire();
-                // LTDAudioManager.Instance.PlaySFX(spellClip);
             }
         }
 
@@ -69,14 +80,13 @@ namespace LTD.GameLogic.Controls
 
         private void IncreaseSpeed()
         {
-            moveSpeed += 3;
-            print("IncreaseSpeed");
-            print(moveSpeed);
+            moveSpeed += 3f;
+            Debug.Log("Increased speed to " + moveSpeed);
         }
 
         private void ShootAnimation()
         {
-            animator.SetTrigger(Shooting);
+            Animator.SetTrigger(Shooting);
         }
 
         #endregion
