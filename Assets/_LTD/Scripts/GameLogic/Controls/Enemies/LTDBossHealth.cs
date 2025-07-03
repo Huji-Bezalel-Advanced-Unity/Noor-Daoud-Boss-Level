@@ -35,6 +35,7 @@ namespace _LTD.Scripts.GameLogic.Controls
         {
             _currentHealth--;
             animator?.SetTrigger(Hurt);
+            LTDAudioManager.Instance.PlaySFX(LTDAudioManager.Instance.devilsHurtSFX);
 
             if (_currentHealth <= 0)
             {

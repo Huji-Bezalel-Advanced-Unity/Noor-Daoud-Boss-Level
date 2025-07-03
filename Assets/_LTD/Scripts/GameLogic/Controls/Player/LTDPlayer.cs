@@ -97,6 +97,7 @@ namespace LTD.GameLogic.Controls
                     wand.transform.localPosition = _originalWandLocalPosition;
                 }
                 wand?.Fire();
+                LTDAudioManager.Instance.PlaySFX(LTDAudioManager.Instance.spellCastSFX);
                 ShootAnimation();
             }
             

@@ -1815,6 +1815,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuMusic: {fileID: 8300000, guid: 9eacbc111cdf86b49a9a0604a4e13ee7, type: 3}
   gameMusic: {fileID: 8300000, guid: e2c8df6e9fb70bc43acc02af287ff0e2, type: 3}
+  spellCastSFX: {fileID: 8300000, guid: 8d35400b7e161b240b5e68abbd65d5fa, type: 3}
+  devilsHurtSFX: {fileID: 8300000, guid: 8cfdf7f2ce7d49c41906ee9338f10e5c, type: 3}
+  lockSFX: {fileID: 8300000, guid: 5e0e323df72c02641a2366f906c69827, type: 3}
+  powerUpSFX: {fileID: 8300000, guid: d84ef829c35ff564eb5e1106b28e1542, type: 3}
 --- !u!4 &1394614815
 Transform:
   m_ObjectHideFlags: 0

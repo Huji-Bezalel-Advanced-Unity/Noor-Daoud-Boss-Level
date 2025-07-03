@@ -12,16 +12,18 @@ namespace LTD.GameLogic.Controls
         [SerializeField] private AudioClip menuMusic;
         [SerializeField] private AudioClip gameMusic;
         
-       // [SerializeField] private AudioClip spellCastSFX;
+        [SerializeField] public AudioClip spellCastSFX;
      //   [SerializeField] private AudioClip playerHurtSFX;
        // [SerializeField] private AudioClip playerDeathSFX;
        
    //    [SerializeField] private AudioClip smallDevilsSoundSFX;
       /// [SerializeField] private AudioClip smallDevilsDeathSFX;
        
-      // [SerializeField] private AudioClip devilsHurtSFX;
+       [SerializeField] public AudioClip devilsHurtSFX;
        //[SerializeField] private AudioClip devilsShootSFX;
-      // [SerializeField] private AudioClip lockSFX;
+       [SerializeField] public AudioClip lockSFX;
+      
+       [SerializeField] public AudioClip powerUpSFX;
        
 
         private AudioSource musicSource;

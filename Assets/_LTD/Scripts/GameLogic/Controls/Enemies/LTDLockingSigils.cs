@@ -26,6 +26,7 @@ namespace _LTD.Scripts.GameLogic.Controls
 
         private void OnTriggerEnter2D(Collider2D other)
         {
+            LTDAudioManager.Instance.PlaySFX(LTDAudioManager.Instance.lockSFX);
             if (_isActivated) return;
 
             _isPlayerNearby = true;

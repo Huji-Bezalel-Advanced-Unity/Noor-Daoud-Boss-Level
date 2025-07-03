@@ -24,7 +24,7 @@ namespace BLE.Gamelogic.Zone
         {
             if (_triggered) return;
             _triggered = true;
-
+            LTDAudioManager.Instance.PlaySFX(LTDAudioManager.Instance.powerUpSFX);
             switch (powerUpType)
             {
                 case PowerUpType.IncreaseSpeed:
