@@ -13,7 +13,7 @@ namespace _LTD.Scripts.GameLogic.Controls
         {
             CoreManager.GameManager.InstantiatePlayer();
             CoreManager.GameManager.InstantiateBoss();
-          //  LTDAudioManager.Instance.PlayGameMusic();
+            LTDAudioManager.Instance.PlayGameMusic();
         }
     }
 }
