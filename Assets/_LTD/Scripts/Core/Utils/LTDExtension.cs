@@ -24,7 +24,6 @@ namespace LTD.Core.Utils
 
                 elapsedTime += Time.deltaTime;
             }
-
             applyValue(endValue);
             onComplete?.Invoke();
         }

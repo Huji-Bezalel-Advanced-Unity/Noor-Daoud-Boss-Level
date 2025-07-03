@@ -15,7 +15,7 @@ namespace BLE.Gamelogic.Providers
         [Header("Spawn Settings")]
         [SerializeField] private Transform[] spawnPoints;
         [SerializeField] private LTDSmallDevils smallDevilsPrefab;
-        [SerializeField] private Transform devilCenter; // Assign the devil's transform in Inspector
+        [SerializeField] private Transform devilCenter; 
 
         private float _spawnInterval = 2f;
         private List<Transform> _enemies;

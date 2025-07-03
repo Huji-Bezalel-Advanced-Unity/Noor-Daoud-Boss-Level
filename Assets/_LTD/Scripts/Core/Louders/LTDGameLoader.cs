@@ -54,7 +54,6 @@ namespace LTD.GameLogic.Louders
             int gameSceneIndex = 1;
             AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(gameSceneIndex);
 
-            // LTDAudioManager.Instance.PlayGameMusic();
 
             asyncLoad.allowSceneActivation = false;
 

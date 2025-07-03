@@ -45,9 +45,10 @@ namespace LTD.GameLogic.Controls
             }
             else
             {
-                Destroy(gameObject);
+                Destroy(gameObject); // Avoid duplicates
             }
         }
+
 
         public void PlayMenuMusic() => PlayMusic(menuMusic);
         public void PlayGameMusic() => PlayMusic(gameMusic);

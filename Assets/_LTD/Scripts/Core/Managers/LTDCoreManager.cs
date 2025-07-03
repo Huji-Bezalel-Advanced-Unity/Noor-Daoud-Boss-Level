@@ -18,14 +18,7 @@ namespace LTD.GameLogic
 
         public void LoadManagers(Action onComplete)
         {
-            Debug.Log("InitCoreManagers started.");
-
-            GameObject temp = new GameObject("MonoManager");
-            temp.AddComponent<LTDMonoManager>();
-            Debug.Log("MonoManager GameObject created");
-
             GameManager = new();
-
             onComplete?.Invoke();
         }
 
