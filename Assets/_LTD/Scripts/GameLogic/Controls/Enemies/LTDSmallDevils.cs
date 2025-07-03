@@ -10,6 +10,8 @@ namespace _LTD.Scripts.GameLogic.Controls
         [SerializeField] private float speed = 10f;
         [SerializeField] private Animator animator;
 
+        
+        
         private Vector2 _moveDirection;
         private Rigidbody2D _rb;
 
@@ -32,6 +34,7 @@ namespace _LTD.Scripts.GameLogic.Controls
         {
             LTDEvents.DecreasePlayerHealth?.Invoke();
             animator.SetBool("Die", true);
+           // LTDAudioManager.Instance.PlaySFX(LTDAudioManager.Instance.spellCastSFX);
             StartCoroutine(WaitAndDestroy());
         }
 

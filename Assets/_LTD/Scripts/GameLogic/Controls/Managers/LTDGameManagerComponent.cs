@@ -1,7 +1,9 @@
 ﻿using BLE.Gamelogic.Providers;
 using LTD.Core.Utils;
 using LTD.GameLogic.BaseMono;
+using LTD.GameLogic.Controls;
 using UnityEngine;
+using UnityEngine.Audio;
 
 namespace _LTD.Scripts.GameLogic.Controls
 {
@@ -11,6 +13,7 @@ namespace _LTD.Scripts.GameLogic.Controls
         {
             CoreManager.GameManager.InstantiatePlayer();
             CoreManager.GameManager.InstantiateBoss();
+          //  LTDAudioManager.Instance.PlayGameMusic();
         }
     }
 }

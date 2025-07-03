@@ -7,10 +7,22 @@ namespace LTD.GameLogic.Controls
     {
 
         public static LTDAudioManager Instance;
-        [Header("Audio Clips")] public AudioClip menuMusic;
-        public AudioClip gameMusic;
-        public AudioClip spellCastSFX;
-        public AudioClip hurtSFX;
+
+        [Header("Audio Clips")]
+        [SerializeField] private AudioClip menuMusic;
+        [SerializeField] private AudioClip gameMusic;
+        
+      //  [SerializeField] private AudioClip spellCastSFX;
+     //   [SerializeField] private AudioClip playerHurtSFX;
+       // [SerializeField] private AudioClip playerDeathSFX;
+       
+   //    [SerializeField] private AudioClip smallDevilsSoundSFX;
+      /// [SerializeField] private AudioClip smallDevilsDeathSFX;
+       
+      // [SerializeField] private AudioClip devilsHurtSFX;
+       //[SerializeField] private AudioClip devilsShootSFX;
+      // [SerializeField] private AudioClip lockSFX;
+       
 
         private AudioSource musicSource;
         private AudioSource sfxSource;

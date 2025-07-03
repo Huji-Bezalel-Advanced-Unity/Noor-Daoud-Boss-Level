@@ -25,11 +25,18 @@ namespace LTD.GameLogic.Louders
             var coreManager = new LTDCoreManager();
             coreManager.LoadManagers(() =>
             {
-                ChangeValueOverTime(ref _sliderCoroutine, 0f, 1f, 0.4f, applyValue => _imageSlider.fillAmount = applyValue, () =>
-                {
-                    _imageSlider.gameObject.SetActive(false);
-                    _startButton.gameObject.SetActive(true);
-                });
+                ChangeValueOverTime(
+                    ref _sliderCoroutine,
+                    0f,
+                    1f,
+                    2.5f, 
+                    applyValue => _imageSlider.fillAmount = applyValue,
+                    () =>
+                    {
+                        _imageSlider.gameObject.SetActive(false);
+                        _startButton.gameObject.SetActive(true);
+                    });
+
             });
 
             _startButton.onClick.AddListener(() =>
