@@ -82,7 +82,7 @@ namespace LTD.GameLogic.Controls
 
             Animator.SetBool(Walk, _direction.magnitude > 0.01f);
 
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) && _direction.magnitude == 0f)
             {
                 if (_lastHorizontal < 0)
                 {

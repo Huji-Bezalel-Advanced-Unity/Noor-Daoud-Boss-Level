@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace LTD.GameLogic.Controls
 {
-    public class LTDBaseProjectile : LTDBaseMono, ILTDBaseProjectile
+    public class LTDSpell : LTDBaseMono, ILTDSpell
     {
 
         private static readonly int Shooting = Animator.StringToHash("Shooting");

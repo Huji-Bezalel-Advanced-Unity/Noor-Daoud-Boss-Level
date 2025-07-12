@@ -18,7 +18,7 @@ namespace _LTD.Scripts.GameLogic.Controls
         [SerializeField] private Slider healthSlider;
 
         [Header("Settings")]
-        [SerializeField] private int maxHealth = 200;
+        [SerializeField] private int maxHealth = 100;
         private Animator playerAnimator;
 
         private int _currentHealth;

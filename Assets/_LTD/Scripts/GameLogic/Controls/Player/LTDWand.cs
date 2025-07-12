@@ -11,7 +11,7 @@ namespace _LTD.Scripts.GameLogic
     {
 
         [Header("Projectile Settings")]
-        [SerializeField] private LTDBaseProjectile spell;
+        [SerializeField] private LTDSpell spell;
 
         public void Fire()
         {

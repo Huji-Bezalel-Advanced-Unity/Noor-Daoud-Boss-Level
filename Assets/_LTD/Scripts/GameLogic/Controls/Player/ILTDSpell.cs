@@ -2,7 +2,7 @@
 
 namespace LTD.GameLogic.Controls
 {
-    public interface ILTDBaseProjectile
+    public interface ILTDSpell
     {
         void FlyTowardsEnemy(Transform target);
 
