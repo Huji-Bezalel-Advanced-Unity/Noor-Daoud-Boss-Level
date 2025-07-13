@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: -3931783385721175597}
   - component: {fileID: 6469731421265329560}
   - component: {fileID: 9203327106605946272}
+  - component: {fileID: 7184629930747661138}
   m_Layer: 7
   m_Name: Small Devils
   m_TagString: Untagged
@@ -278,3 +279,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &7184629930747661138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6476802561347026803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7456e6911e9486c86854a238aa10d48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minX: -0.5
+  maxX: 0.5
+  minY: -0.4
+  maxY: 0.416

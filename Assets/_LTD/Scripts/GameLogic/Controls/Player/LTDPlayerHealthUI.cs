@@ -54,7 +54,7 @@ namespace _LTD.Scripts.GameLogic.Controls
         {
             CoreManager.GameManager.Player.Animator.SetTrigger(Hurt);
 
-            _currentHealth = Mathf.Max(_currentHealth - 1, 0);
+            _currentHealth -= 1;
 
             if (_currentHealth == 0)
             {

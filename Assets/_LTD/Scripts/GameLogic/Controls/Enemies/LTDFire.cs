@@ -25,11 +25,10 @@ namespace _LTD.Scripts.GameLogic.Controls
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            // if (other.gameObject.CompareTag("Player"))
-            // {
-            LTDEvents.DecreasePlayerHealth?.Invoke();
-            // }
-
+            if (other.tag == "Player")
+            {
+                LTDEvents.DecreasePlayerHealth?.Invoke();
+            }
             Destroy(gameObject);
         }
 

@@ -20,7 +20,6 @@ namespace _LTD.Scripts.GameLogic
             Vector3 playerForward =  CoreManager.GameManager.Player.Animator.transform.localScale.x > 0 ? Vector3.right : Vector3.left;
             Transform target = LTDSmallDevilProvider.Instance.GetNearestEnemy(CoreManager.GameManager.Player.transform.position,
                 playerForward, 90f);
-
             if (target != null)
             {
                 projectile.FlyTowardsEnemy(target);

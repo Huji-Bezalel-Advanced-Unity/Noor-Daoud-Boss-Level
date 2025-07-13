@@ -32,7 +32,10 @@ namespace _LTD.Scripts.GameLogic.Controls
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            LTDEvents.DecreasePlayerHealth?.Invoke();
+            if (other.tag == "Player")
+            {
+                LTDEvents.DecreasePlayerHealth?.Invoke();
+            }
             animator.SetBool("Die", true);
            // LTDAudioManager.Instance.PlaySFX(LTDAudioManager.Instance.spellCastSFX);
             StartCoroutine(WaitAndDestroy());
