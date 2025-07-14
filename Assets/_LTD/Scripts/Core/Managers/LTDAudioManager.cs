@@ -1,7 +1,7 @@
-﻿using LTD.GameLogic.BaseMono;
+﻿using LTD.Core.BaseMono;
 using UnityEngine;
 
-namespace LTD.GameLogic.Controls
+namespace LTD.Core.Managers
 {
     public class LTDAudioManager : LTDBaseMono
     {
@@ -45,28 +45,30 @@ namespace LTD.GameLogic.Controls
             }
             else
             {
-                Destroy(gameObject); // Avoid duplicates
+                Destroy(gameObject);
             }
         }
 
+  
 
         public void PlayMenuMusic() => PlayMusic(menuMusic);
         public void PlayGameMusic() => PlayMusic(gameMusic);
-
         private void PlayMusic(AudioClip clip)
         {
-            if (clip == null) return;
+            if (clip == null || musicSource == null) return;
+
             musicSource.clip = clip;
             musicSource.Play();
         }
 
         public void PlaySFX(AudioClip clip)
         {
-            if (clip != null)
+            if (clip != null && sfxSource != null)
             {
                 sfxSource.PlayOneShot(clip);
             }
         }
+        
 
     }
 }

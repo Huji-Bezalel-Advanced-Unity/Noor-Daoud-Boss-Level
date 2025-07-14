@@ -1,12 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using LTD.GameLogic.BaseMono;
+using LTD.Core.BaseMono;
 using UnityEngine;
-using _LTD.Scripts.GameLogic.Controls;
-using LTD.GameLogic.Controls;
+using LTD.Core.Enemies;
 
-namespace BLE.Gamelogic.Providers
+namespace LTD.Gamelogic.Providers
 {
     public class LTDSmallDevilProvider : LTDBaseMono
     {

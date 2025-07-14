@@ -1,7 +1,6 @@
 ﻿using System;
-using UnityEngine;
 
-namespace LTD.GameLogic
+namespace LTD.Core.Managers
 {
     public class LTDCoreManager
     {
