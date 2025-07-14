@@ -9,7 +9,6 @@ namespace LTD.Core.Enemies
     {
         #region Animator Hashes
 
-        private static readonly int Die1 = Animator.StringToHash("Die");
         private static readonly int Hurt = Animator.StringToHash("Hurt");
 
         #endregion

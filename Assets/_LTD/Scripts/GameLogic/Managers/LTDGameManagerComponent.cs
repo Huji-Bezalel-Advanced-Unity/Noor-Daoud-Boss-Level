@@ -9,7 +9,6 @@ namespace LTD.Core.Managers
             CoreManager.GameManager.InstantiatePlayer();
             CoreManager.GameManager.InstantiateBoss();
             LTDAudioManager.Instance.PlayGameMusic();
-        
         }
     }
 }

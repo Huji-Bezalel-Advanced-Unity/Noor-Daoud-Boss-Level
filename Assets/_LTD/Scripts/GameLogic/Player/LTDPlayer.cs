@@ -13,7 +13,6 @@ namespace LTD.Core.Player
         private static readonly int Shooting = Animator.StringToHash("Shooting");
 
         #endregion
-
         [Header("Settings")]
         [SerializeField] private float moveSpeed = 5f;
 

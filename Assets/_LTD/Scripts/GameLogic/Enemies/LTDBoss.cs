@@ -10,13 +10,9 @@ namespace LTD.Core.Enemies
     public class LTDBoss : LTDBaseMono
     {
 
-        [Header("Target & Projectile")]
         [SerializeField] private LTDFire firePrefab;
 
-        [FormerlySerializedAs("_shootCooldown")]
-        // [Header("Shooting Settings")]
         private float shootCooldown = 1;
-
         private float _lastShootTime;
         private Coroutine _shootingCoroutine;
         private Coroutine _safeZoneDelayCoroutine;
@@ -92,21 +88,6 @@ namespace LTD.Core.Enemies
                 yield return null;
             }
         }
-
-        // private IEnumerator HandleShooting()
-        // {
-        //     var fire = Instantiate(firePrefab, transform.position, Quaternion.identity);
-        //     if (fire != null)
-        //     {
-        //         fire.transform.position = transform.position;
-        //         Vector3 direction = (CoreManager.GameManager.Player.transform.position - transform.position).normalized;
-        //         fire.Shoot(direction, 30f);
-
-        //         _lastShootTime = Time.time;
-
-        //         yield return new WaitForSeconds(shootCooldown);
-        //     }
-        // }
 
         private IEnumerator HandleShooting()
         {

@@ -8,8 +8,6 @@ namespace LTD.Core.Enemies
     {
         [SerializeField] private float speed = 10f;
         [SerializeField] private Animator animator;
-
-        
         
         private Vector2 _moveDirection;
         private Rigidbody2D _rb;
@@ -42,7 +40,7 @@ namespace LTD.Core.Enemies
 
         private IEnumerator WaitAndDestroy()
         {
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.19f);
             Destroy(gameObject);
         }
     }

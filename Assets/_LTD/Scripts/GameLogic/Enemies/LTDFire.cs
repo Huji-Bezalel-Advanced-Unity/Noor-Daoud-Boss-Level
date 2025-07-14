@@ -6,7 +6,6 @@ namespace LTD.Core.Enemies
 {
     public class LTDFire : LTDBaseMono
     {
-
         private Rigidbody2D _rigidbody2D;
         private void Awake()
         {
@@ -17,9 +16,6 @@ namespace LTD.Core.Enemies
         public void Shoot(Vector3 direction, float speed)
         {
             _rigidbody2D.linearVelocity = direction * speed;
-
-            // float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            // transform.rotation = Quaternion.AngleAxis(angle + 90f, Vector3.forward);
         }
 
         private void OnTriggerEnter2D(Collider2D other)

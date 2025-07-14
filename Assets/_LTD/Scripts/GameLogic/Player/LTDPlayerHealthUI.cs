@@ -26,8 +26,8 @@ namespace LTD.Core.Player
         {
             _currentHealth = maxHealth;
             UpdateUI();
-            Core.Managers.LTDEvents.DecreasePlayerHealth += OnHealthDecreased;
-            Core.Managers.LTDEvents.IncreasePlayerHealth += OnHealthIncreased;
+            Managers.LTDEvents.DecreasePlayerHealth += OnHealthDecreased;
+            Managers.LTDEvents.IncreasePlayerHealth += OnHealthIncreased;
             
         }
 
@@ -35,8 +35,8 @@ namespace LTD.Core.Player
 
         private void OnDestroy()
         {
-            Core.Managers.LTDEvents.DecreasePlayerHealth -= OnHealthDecreased;
-            Core.Managers.LTDEvents.IncreasePlayerHealth -= OnHealthIncreased;
+            Managers.LTDEvents.DecreasePlayerHealth -= OnHealthDecreased;
+            Managers.LTDEvents.IncreasePlayerHealth -= OnHealthIncreased;
 
         }
 
@@ -68,8 +68,8 @@ namespace LTD.Core.Player
         private void OnPlayerDied()
         {
             UpdateUI();
-            CoreManager.GameManager.Player.Animator.SetBool(Die, true);
-            Core.Managers.LTDEvents.PlayerDies?.Invoke();
+            CoreManager.GameManager.Player.Animator.SetBool(Die, true); 
+            Managers.LTDEvents.PlayerDies?.Invoke();
         }
 
         #endregion

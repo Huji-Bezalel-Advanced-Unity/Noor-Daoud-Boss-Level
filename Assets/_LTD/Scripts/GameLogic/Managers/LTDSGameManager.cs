@@ -31,8 +31,5 @@ namespace LTD.Core.Managers
             Boss = UnityEngine.Object.Instantiate(_bossPrefab);
             Boss.transform.position = _bossSpawnPosition;
         }
-
-  
-        
     }
 }
