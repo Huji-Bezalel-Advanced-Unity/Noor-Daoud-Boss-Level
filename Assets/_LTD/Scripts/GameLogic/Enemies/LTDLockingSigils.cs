@@ -16,9 +16,10 @@ namespace LTD.GameLogic.Enemies
         private bool _isPlayerNearby = false;
         private bool _isActivated = false;
         
+        //TODO:convert to cort...
         private void Update()
         {
-            if (_isPlayerNearby && !_isActivated && Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) &&_isPlayerNearby && !_isActivated)
             {
                 ActivateSigil();
             }

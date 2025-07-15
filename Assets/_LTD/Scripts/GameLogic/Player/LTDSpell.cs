@@ -34,7 +34,7 @@ namespace LTD.Core.Player
                 transform.up = direction;
                 transform.position += transform.up * speed * Time.deltaTime;
 
-                LTDEvents.PlayerShoot.Invoke();
+           //     LTDEvents.PlayerShoot.Invoke();
 
                 yield return null;
             }

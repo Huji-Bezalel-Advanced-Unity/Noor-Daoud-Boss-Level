@@ -18,12 +18,11 @@ namespace LTD.Gamelogic.Features
 
         [SerializeField] private LTDShieldActive shieldPrefab;
 
-        private bool _triggered = false;
+        [SerializeField]private Collider2D _triggeredCollider2D ;
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (_triggered) return;
-            _triggered = true;
+            _triggeredCollider2D.enabled = false;
             LTDAudioManager.Instance.PlaySFX(LTDAudioManager.Instance.powerUpSFX);
             switch (powerUpType)
             {
@@ -35,7 +34,7 @@ namespace LTD.Gamelogic.Features
                     LTDEvents.IncreasePlayerHealth?.Invoke();
                     break;
 
-                case PowerUpType.shield:
+                case PowerUpType.Shield:
                     var player = CoreManager.GameManager.Player;
                     if (player != null)
                     {
@@ -68,6 +67,6 @@ namespace LTD.Gamelogic.Features
     {
         IncreaseSpeed,
         IncreaseHealth,
-        shield
+        Shield
     }
 }

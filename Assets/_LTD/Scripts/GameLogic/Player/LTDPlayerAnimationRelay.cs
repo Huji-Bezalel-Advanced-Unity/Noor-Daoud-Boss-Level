@@ -13,6 +13,6 @@ public class LTDPlayerAnimationRelay : MonoBehaviour
     
     public void ShootSpell()
     {
-       // _player?.ShootSpell();
+        _player.Wand?.Fire();
     }
 }

@@ -141,6 +141,7 @@ MonoBehaviour:
   powerUpType: 0
   animator: {fileID: 5891997884250728302}
   shieldPrefab: {fileID: 6125148591072949497, guid: 379ba6aaba748af4095a21a79a711b66, type: 3}
+  _triggeredCollider2D: {fileID: 3846798234258206127}
 --- !u!1 &8558590294316184379
 GameObject:
   m_ObjectHideFlags: 0

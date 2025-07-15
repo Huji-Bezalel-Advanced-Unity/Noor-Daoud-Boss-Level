@@ -105,6 +105,7 @@ MonoBehaviour:
   powerUpType: 1
   animator: {fileID: 1522213978549444399}
   shieldPrefab: {fileID: 6125148591072949497, guid: 379ba6aaba748af4095a21a79a711b66, type: 3}
+  _triggeredCollider2D: {fileID: 917782622124593084}
 --- !u!58 &917782622124593084
 CircleCollider2D:
   m_ObjectHideFlags: 0

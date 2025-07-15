@@ -2,6 +2,7 @@ using System.Collections;
 using LTD.Core.BaseMono;
 using LTD.Core.Managers;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace LTD.Core.Player
 {
@@ -16,8 +17,9 @@ namespace LTD.Core.Player
         [Header("Settings")]
         [SerializeField] private float moveSpeed = 5f;
 
+        [FormerlySerializedAs("wand")]
         [Header("References")]
-        [SerializeField] private LTDWand wand;
+        [SerializeField] public LTDWand Wand;
         [field: SerializeField] public Animator Animator { get; private set; }
 
         private Vector3 _direction;
@@ -30,7 +32,7 @@ namespace LTD.Core.Player
         {
             LTDEvents.PlayerShoot += ShootAnimation;
             LTDEvents.IncreasePlayerSpeed += IncreaseSpeed;
-            _originalWandLocalPosition = wand.transform.localPosition;
+            _originalWandLocalPosition = Wand.transform.localPosition;
 
             _inputCoroutine = StartCoroutine(InputLoop());
         }
@@ -82,9 +84,10 @@ namespace LTD.Core.Player
 
             if (Input.GetKeyDown(KeyCode.Space) && _direction.magnitude == 0f)
             {
+                // Flip wand position
                 if (_lastHorizontal < 0)
                 {
-                    wand.transform.localPosition = new Vector3(
+                    Wand.transform.localPosition = new Vector3(
                         -Mathf.Abs(_originalWandLocalPosition.x),
                         _originalWandLocalPosition.y,
                         _originalWandLocalPosition.z
@@ -92,13 +95,12 @@ namespace LTD.Core.Player
                 }
                 else
                 {
-                    wand.transform.localPosition = _originalWandLocalPosition;
+                    Wand.transform.localPosition = _originalWandLocalPosition;
                 }
-                wand?.Fire();
                 LTDAudioManager.Instance.PlaySFX(LTDAudioManager.Instance.spellCastSFX);
-                ShootAnimation();
+                ShootAnimation(); 
             }
-            
+
         }
 
         #endregion
@@ -111,7 +113,9 @@ namespace LTD.Core.Player
             Debug.Log("Increased speed to " + moveSpeed);
         }
 
-        private void ShootAnimation()
+        
+        
+        public void ShootAnimation()
         {
             Animator.SetTrigger(Shooting);
         }
