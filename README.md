@@ -10,7 +10,7 @@
 
 ## 📌 Planning
 
-**Diagram:** 
+**Diagram:** 📄 [Boss Level UML Diagram (PDF)](https://github.com/Huji-Bezalel-Advanced-Unity/Noor-Daoud-Boss-Level/raw/main/BossLevel_UML_Diagram.pdf)
 
 ---
 
