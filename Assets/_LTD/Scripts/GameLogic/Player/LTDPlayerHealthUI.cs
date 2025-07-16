@@ -30,24 +30,20 @@ namespace LTD.Core.Player
             Managers.LTDEvents.IncreasePlayerHealth += OnHealthIncreased;
             
         }
-
-       
-
+        
         private void OnDestroy()
         {
             Managers.LTDEvents.DecreasePlayerHealth -= OnHealthDecreased;
             Managers.LTDEvents.IncreasePlayerHealth -= OnHealthIncreased;
 
         }
-
-
+        
         #region Health Handling
 
         private void OnHealthIncreased()
         {
             _currentHealth += 2;
             UpdateUI();
-            print("Health Increased");
         }
         private void OnHealthDecreased(int amount)
         {
@@ -55,7 +51,7 @@ namespace LTD.Core.Player
 
             _currentHealth -= amount;
 
-            if (_currentHealth == 0)
+            if (_currentHealth <= 0)
             {
                 OnPlayerDied();
             }
