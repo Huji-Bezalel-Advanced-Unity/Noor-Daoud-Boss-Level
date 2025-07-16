@@ -1,99 +1,115 @@
-Noor Daood Boss Level .
+# Noor Daood Boss Level
 
-Links:
+## 🔗 Links
 
-Gameplay Video: 
-Itch.io Game:
-CodeReview Video:
+- **Gameplay Video:** [Add link here]
+- **Itch.io Game:** [Add link here]
+- **CodeReview Video:** [Add link here]
 
-Planning
-diagram-
+---
 
+## 📌 Planning
 
-🔹 Controls (Keyboard)
-Shoot / Activate Lock: Spacebar
+**Diagram:** [BossLevel_UML_Diagram.pdf](https://github.com/Huji-Bezalel-Advanced-Unity/Noor-Daoud-Boss-Level/blob/main/BossLevel_UML_Diagram.pdf)
 
-Movement: Arrow Keys or W/A/S/D
+---
 
-🔹 Game Concept
-Story
-You play as a wizard trapped in the Devil’s Room. Your goal is to lock the boss by activating sigils scattered around, all while surviving attacks from the devil and his minions.
+## 🎮 Controls (Keyboard)
 
-🔹 Enemies
-🔸 Boss (The Devil)
-Appearance: A large devil located at the center of the room.
+- **Shoot / Activate Lock:** `Spacebar`  
+- **Movement:** Arrow Keys or `W / A / S / D`
 
-Behavior: Automatically shoots fireballs in all directions every 3 seconds.
+---
 
-Invulnerability: Cannot be damaged by player attacks.
+## 🧙 Game Concept
 
-Weakness: Temporarily stops attacking when the player enters a safe zone.
+### 📖 Story
+You play as a wizard trapped in the Devil’s Room.  
+Your goal is to lock the boss by activating sigils scattered around, all while surviving attacks from the devil and his minions.
 
-🔸 Small Devils
-Appearance: Smaller devil-like creatures.
+---
 
-Spawn: Random directions and intervals.
+## 👹 Enemies
 
-Attack: Damage the player on contact and then disappear.
+### 🔥 Boss (The Devil)
 
-Weakness: Can be destroyed by the player's magic (spells).
+- **Appearance:** A large devil located at the center of the room.  
+- **Behavior:** Automatically shoots fireballs in all directions every 3 seconds.  
+- **Invulnerability:** Cannot be damaged by player attacks.  
+- **Weakness:** Temporarily stops attacking when the player enters a safe zone.
 
-🔹 Player Mechanics
-Movement: Free movement across the arena using keyboard.
+### 😈 Small Devils
 
-Attack: Fires projectiles (spells) to eliminate small devils.
+- **Appearance:** Smaller devil-like creatures.  
+- **Spawn:** Random directions and intervals.  
+- **Attack:** Damage the player on contact and then disappear.  
+- **Weakness:** Can be destroyed by the player's magic (spells).
 
-Defense: Collect a shield power-up for temporary protection.
+---
 
-Escape Mechanism: Entering a safe zone stops the boss's fire attack for 3 seconds.
+## 🧝 Player Mechanics
 
-Lock Activation: Press Spacebar at a locking sigil to damage the boss.
+- **Movement:** Free movement across the arena using keyboard.  
+- **Attack:** Fires projectiles (spells) to eliminate small devils.  
+- **Defense:** Collect a shield power-up for temporary protection.  
+- **Escape Mechanism:** Entering a safe zone stops the boss's fire attack for 3 seconds.  
+- **Lock Activation:** Press `Spacebar` at a locking sigil to damage the boss.
 
-🔹 Interactive Elements
-🔸 Power-Ups
-Types:
+---
 
-Increase Speed
+## 🧩 Interactive Elements
 
-Increase Health
+### ⚡ Power-Ups
 
-Shield (temporary invincibility)
+- **Types:**
+  - Increase Speed  
+  - Increase Health  
+  - Shield (temporary invincibility)
+- **Acquisition:** Picked up when the player collides with them.
 
-Acquisition: Picked up when the player collides with them.
+### 🛡️ Safe Zones
 
-🔸 Safe Zones
-Appearance: Glowing circles around the room.
+- **Appearance:** Glowing circles around the room.  
+- **Effect:** Entering one delays the boss's attack for 3 seconds.
+- **Usage Limit:** Each safe zone works only once per game and becomes inactive after activation.
 
-Effect: Entering one delays the boss's attack for 3 seconds.
+### 🔒 Locking Sigils
 
-🔸 Locking Sigils
-Appearance: Special symbols around the arena.
+- **Appearance:** Special symbols around the arena.  
+- **Mechanic:** Activated with `Spacebar` to reduce the boss's health.
 
-Mechanic: Activated with Spacebar to reduce the boss's health.
+---
 
-🔹 Level Design
-Environment: An enclosed battle arena.
+## 🧭 Level Design
 
-Layout: Strategically placed elements (locks, safe zones, power-ups) to encourage movement and planning.
+- **Environment:** An enclosed battle arena.  
+- **Layout:** Strategically placed elements (locks, safe zones, power-ups) to encourage movement and planning.  
+- **Objective:** Lock and defeat the boss while surviving waves of small devils.
 
-Objective: Lock and defeat the boss while surviving waves of small devils.
+---
 
-🔹 Audio & Visuals
-Sound
-Music: Background boss theme.
+## 🔊 Audio & 🎨 Visuals
 
-Effects:
+### 🎵 Sound
 
-Power-up collection
+- **Music:** Background boss theme  
+- **Effects:**
+  - Power-up collection  
+  - Spell casting  
+  - Lock activation  
 
-Spell casting
+### 🖥️ UI
 
-Lock activation
+- **Indicators:** Health bar, death/win screens  
+- **Visual Feedback:** Screen cues for power-ups, lock activation, and damage
 
-UI
-Indicators: Health bar, death/win screens.
+### 🎨 Art & Assets
 
-Visual Feedback: Screen cues for power-ups, lock activation, and damage.
-
-Art & Assets
-Player character, devils (boss + small), fireballs, safe zones, power-ups, lock sigils, room background, and spell effects.
+- Player character  
+- Devils (boss + small)  
+- Fireballs  
+- Safe zones  
+- Power-ups  
+- Lock sigils  
+- Room background  
+- Spell effects
