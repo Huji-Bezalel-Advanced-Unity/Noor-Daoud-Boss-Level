@@ -26,15 +26,15 @@ namespace LTD.Core.Player
         {
             _currentHealth = maxHealth;
             UpdateUI();
-            Managers.LTDEvents.DecreasePlayerHealth += OnHealthDecreased;
-            Managers.LTDEvents.IncreasePlayerHealth += OnHealthIncreased;
+            Managers.AudioManager.LTDEvents.DecreasePlayerHealth += OnHealthDecreased;
+            Managers.AudioManager.LTDEvents.IncreasePlayerHealth += OnHealthIncreased;
             
         }
         
         private void OnDestroy()
         {
-            Managers.LTDEvents.DecreasePlayerHealth -= OnHealthDecreased;
-            Managers.LTDEvents.IncreasePlayerHealth -= OnHealthIncreased;
+            Managers.AudioManager.LTDEvents.DecreasePlayerHealth -= OnHealthDecreased;
+            Managers.AudioManager.LTDEvents.IncreasePlayerHealth -= OnHealthIncreased;
 
         }
         
@@ -65,7 +65,7 @@ namespace LTD.Core.Player
         {
             UpdateUI();
             CoreManager.GameManager.Player.Animator.SetBool(Die, true); 
-            Managers.LTDEvents.PlayerDies?.Invoke();
+            Managers.AudioManager.LTDEvents.PlayerDies?.Invoke();
         }
 
         #endregion

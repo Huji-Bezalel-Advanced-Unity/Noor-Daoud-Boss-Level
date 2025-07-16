@@ -1,30 +1,34 @@
 ﻿using LTD.Core.BaseMono;
 using UnityEngine;
+using System.Collections.Generic;
 
-namespace LTD.Core.Managers
+namespace LTD.Core.Managers.AudioManager
 {
     public class LTDAudioManager : LTDBaseMono
     {
-
         public static LTDAudioManager Instance;
 
+        public enum AudioClipType
+        {
+            MenuMusic,
+            GameMusic,
+            SpellCast,
+            DevilsHurt,
+            Lock,
+            PowerUp
+        }
+
+        [System.Serializable]
+        public struct AudioClipEntry
+        {
+            public AudioClipType type;
+            public AudioClip clip;
+        }
+
         [Header("Audio Clips")]
-        [SerializeField] private AudioClip menuMusic;
-        [SerializeField] private AudioClip gameMusic;
-        
-        [SerializeField] public AudioClip spellCastSFX;
-     //   [SerializeField] private AudioClip playerHurtSFX;
-       // [SerializeField] private AudioClip playerDeathSFX;
-       
-   //    [SerializeField] private AudioClip smallDevilsSoundSFX;
-      /// [SerializeField] private AudioClip smallDevilsDeathSFX;
-       
-       [SerializeField] public AudioClip devilsHurtSFX;
-       //[SerializeField] private AudioClip devilsShootSFX;
-       [SerializeField] public AudioClip lockSFX;
-      
-       [SerializeField] public AudioClip powerUpSFX;
-       
+        [SerializeField] private AudioClipEntry[] audioClipEntries;
+
+        private Dictionary<AudioClipType, AudioClip> audioClips;
 
         private AudioSource musicSource;
         private AudioSource sfxSource;
@@ -41,7 +45,10 @@ namespace LTD.Core.Managers
 
                 musicSource.loop = true;
                 musicSource.volume = 0.5f;
-                PlayMenuMusic();
+
+                LoadAudioClips();
+
+                PlayMusic(AudioClipType.MenuMusic);
             }
             else
             {
@@ -49,26 +56,33 @@ namespace LTD.Core.Managers
             }
         }
 
-  
-
-        public void PlayMenuMusic() => PlayMusic(menuMusic);
-        public void PlayGameMusic() => PlayMusic(gameMusic);
-        private void PlayMusic(AudioClip clip)
+        private void LoadAudioClips()
         {
-            if (clip == null || musicSource == null) return;
-
-            musicSource.clip = clip;
-            musicSource.Play();
+            audioClips = new Dictionary<AudioClipType, AudioClip>();
+            foreach (var entry in audioClipEntries)
+            {
+                if (!audioClips.ContainsKey(entry.type))
+                {
+                    audioClips.Add(entry.type, entry.clip);
+                }
+            }
         }
 
-        public void PlaySFX(AudioClip clip)
+        public void PlayMusic(AudioClipType type)
         {
-            if (clip != null && sfxSource != null)
+            if (audioClips.TryGetValue(type, out AudioClip clip) && musicSource != null)
+            {
+                musicSource.clip = clip;
+                musicSource.Play();
+            }
+        }
+
+        public void PlaySFX(AudioClipType type)
+        {
+            if (audioClips.TryGetValue(type, out AudioClip clip) && sfxSource != null)
             {
                 sfxSource.PlayOneShot(clip);
             }
         }
-        
-
     }
 }

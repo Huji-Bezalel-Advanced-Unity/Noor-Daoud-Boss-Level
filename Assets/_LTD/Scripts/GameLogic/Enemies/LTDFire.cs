@@ -1,5 +1,5 @@
 ﻿using LTD.Core.BaseMono;
-using LTD.Core.Managers;
+using LTD.Core.Managers.AudioManager;
 using UnityEngine;
 
 namespace LTD.Core.Enemies

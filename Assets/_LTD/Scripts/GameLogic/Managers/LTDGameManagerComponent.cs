@@ -1,6 +1,6 @@
 ﻿using LTD.Core.BaseMono;
 
-namespace LTD.Core.Managers
+namespace LTD.Core.Managers.AudioManager
 {
     public class LTDGameManagerComponent : LTDBaseMono
     {
@@ -8,7 +8,7 @@ namespace LTD.Core.Managers
         {
             CoreManager.GameManager.InstantiatePlayer();
             CoreManager.GameManager.InstantiateBoss();
-            LTDAudioManager.Instance.PlayGameMusic();
+            LTDAudioManager.Instance.PlayMusic(LTDAudioManager.AudioClipType.GameMusic);
         }
     }
 }

@@ -2,7 +2,7 @@
 using LTD.Core.Player;
 using UnityEngine;
 
-namespace LTD.Core.Managers
+namespace LTD.Core.Managers.AudioManager
 {
     public class LTDGameManager
     {

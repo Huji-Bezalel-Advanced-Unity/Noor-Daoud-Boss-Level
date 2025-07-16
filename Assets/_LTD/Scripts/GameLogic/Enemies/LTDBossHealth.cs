@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using LTD.Core.BaseMono;
-using LTD.Core.Managers;
+using LTD.Core.Managers.AudioManager;
 using UnityEngine;
 
 namespace LTD.Core.Enemies
@@ -36,7 +36,9 @@ namespace LTD.Core.Enemies
         {
             _currentHealth--;
             animator?.SetTrigger(Hurt);
-            LTDAudioManager.Instance.PlaySFX(LTDAudioManager.Instance.devilsHurtSFX);
+           LTDAudioManager.Instance.PlaySFX(LTDAudioManager.AudioClipType.DevilsHurt);
+
+           
             if (_currentHealth <= 0)
             {
                 spriteRenderer.color = _dieColor;

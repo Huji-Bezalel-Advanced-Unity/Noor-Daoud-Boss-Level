@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using LTD.Core.Player;
 using LTD.Core.BaseMono;
-using LTD.Core.Managers;
+using LTD.Core.Managers.AudioManager;
 using UnityEngine;
 
 namespace LTD.Gamelogic.Features
@@ -23,7 +23,7 @@ namespace LTD.Gamelogic.Features
         private void OnTriggerEnter2D(Collider2D other)
         {
             _triggeredCollider2D.enabled = false;
-            LTDAudioManager.Instance.PlaySFX(LTDAudioManager.Instance.powerUpSFX);
+            LTDAudioManager.Instance.PlaySFX(LTDAudioManager.AudioClipType.PowerUp);
             switch (powerUpType)
             {
                 case PowerUpType.IncreaseSpeed:

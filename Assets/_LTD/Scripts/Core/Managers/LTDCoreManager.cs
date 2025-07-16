@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LTD.Core.Managers
+namespace LTD.Core.Managers.AudioManager
 {
     public class LTDCoreManager
     {

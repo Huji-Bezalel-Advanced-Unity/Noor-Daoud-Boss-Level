@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using LTD.Core.BaseMono;
 using LTD.Core.Utils;
-using LTD.Core.Managers;
+using LTD.Core.Managers.AudioManager;
 using UnityEngine;
 using UnityEngine.Serialization;
 

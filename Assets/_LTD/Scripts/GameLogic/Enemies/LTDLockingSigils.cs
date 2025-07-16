@@ -1,5 +1,5 @@
 ﻿using LTD.Core.BaseMono;
-using LTD.Core.Managers;
+using LTD.Core.Managers.AudioManager;
 using UnityEngine;
 
 namespace LTD.GameLogic.Enemies
@@ -27,7 +27,7 @@ namespace LTD.GameLogic.Enemies
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            LTDAudioManager.Instance.PlaySFX(LTDAudioManager.Instance.lockSFX);
+            LTDAudioManager.Instance.PlaySFX(LTDAudioManager.AudioClipType.Lock);
             if (_isActivated) return;
 
             _isPlayerNearby = true;

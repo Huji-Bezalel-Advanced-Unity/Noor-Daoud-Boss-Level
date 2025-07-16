@@ -1,6 +1,6 @@
 using System.Collections;
 using LTD.Core.BaseMono;
-using LTD.Core.Managers;
+using LTD.Core.Managers.AudioManager;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -97,7 +97,6 @@ namespace LTD.Core.Player
                 {
                     Wand.transform.localPosition = _originalWandLocalPosition;
                 }
-                LTDAudioManager.Instance.PlaySFX(LTDAudioManager.Instance.spellCastSFX);
                 ShootAnimation(); 
             }
 

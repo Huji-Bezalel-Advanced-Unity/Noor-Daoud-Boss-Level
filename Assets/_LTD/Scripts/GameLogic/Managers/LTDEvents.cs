@@ -1,7 +1,7 @@
 ﻿using System;
 using _LTD.Scripts.GameLogic;
 
-namespace LTD.Core.Managers
+namespace LTD.Core.Managers.AudioManager
 {
     public class LTDEvents
     {
