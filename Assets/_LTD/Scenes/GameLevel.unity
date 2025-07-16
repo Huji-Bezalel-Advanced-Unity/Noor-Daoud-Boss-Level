@@ -19544,7 +19544,7 @@ GameObject:
   - component: {fileID: 1128452484}
   - component: {fileID: 1128452483}
   m_Layer: 5
-  m_Name: Ending Canvas
+  m_Name: EndingCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

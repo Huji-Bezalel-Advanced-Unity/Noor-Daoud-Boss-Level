@@ -1,32 +1,40 @@
 using System.Collections;
-using LTD.Core.BaseMono;
-using LTD.Core.Managers.AudioManager;
+using LTD.GameLogic.Player;
+using LTD.GameLogic.BaseMono;
+using LTD.GameLogic.Managers;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace LTD.Core.Player
+namespace LTD.GameLogic.Player
 {
+    /// <summary>
+    /// Handles player input, movement, animation, and shooting logic.
+    /// Subscribes to relevant game events and interacts with the wand.
+    /// </summary>
     public class LTDPlayer : LTDBaseMono
     {
-        #region Animator Hashes
 
         private static readonly int Walk = Animator.StringToHash("Walk");
         private static readonly int Shooting = Animator.StringToHash("Shooting");
-
-        #endregion
+        
         [Header("Settings")]
+        [Tooltip("Movement speed of the player.")]
         [SerializeField] private float moveSpeed = 5f;
 
-        [FormerlySerializedAs("wand")]
         [Header("References")]
+        [Tooltip("Reference to the player's wand.")]
+        [FormerlySerializedAs("wand")]
         [SerializeField] public LTDWand Wand;
+
+        [Tooltip("Animator component for player animations.")]
         [field: SerializeField] public Animator Animator { get; private set; }
+        
 
         private Vector3 _direction;
         private float _lastHorizontal = 1f;
         private Vector3 _originalWandLocalPosition;
-
         private Coroutine _inputCoroutine;
+        
 
         private void Start()
         {
@@ -46,18 +54,24 @@ namespace LTD.Core.Player
                 StopCoroutine(_inputCoroutine);
         }
 
+
+        #region Input Handling
+
+        /// <summary>
+        /// Continuously checks for input in a coroutine.
+        /// </summary>
         private IEnumerator InputLoop()
         {
             while (true)
             {
                 CheckInput();
-                yield return null; 
+                yield return null;
             }
         }
 
-
-        #region Input Handling
-
+        /// <summary>
+        /// Handles movement, animation direction flipping, and shooting.
+        /// </summary>
         private void CheckInput()
         {
             float horizontal = 0f;
@@ -84,36 +98,46 @@ namespace LTD.Core.Player
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                // Flip wand position
-                if (_lastHorizontal < 0)
-                {
-                    Wand.transform.localPosition = new Vector3(
-                        -Mathf.Abs(_originalWandLocalPosition.x),
-                        _originalWandLocalPosition.y,
-                        _originalWandLocalPosition.z
-                    );
-                }
-                else
-                {
-                    Wand.transform.localPosition = _originalWandLocalPosition;
-                }
-                ShootAnimation(); 
+                AdjustWandPositionBasedOnDirection();
+                ShootAnimation();
             }
+        }
 
+        /// <summary>
+        /// Updates the wand's local position based on player's direction.
+        /// </summary>
+        private void AdjustWandPositionBasedOnDirection()
+        {
+            if (_lastHorizontal < 0)
+            {
+                Wand.transform.localPosition = new Vector3(
+                    -Mathf.Abs(_originalWandLocalPosition.x),
+                    _originalWandLocalPosition.y,
+                    _originalWandLocalPosition.z
+                );
+            }
+            else
+            {
+                Wand.transform.localPosition = _originalWandLocalPosition;
+            }
         }
 
         #endregion
 
         #region Event Handlers
 
+        /// <summary>
+        /// Increases the player's speed (triggered by a power-up).
+        /// </summary>
         private void IncreaseSpeed()
         {
             moveSpeed += 3f;
             Debug.Log("Increased speed to " + moveSpeed);
         }
 
-        
-        
+        /// <summary>
+        /// Triggers the shooting animation.
+        /// </summary>
         public void ShootAnimation()
         {
             Animator.SetTrigger(Shooting);

@@ -1,20 +1,31 @@
 ﻿using System.Collections;
-using LTD.Core.BaseMono;
-using LTD.Core.Managers.AudioManager;
+using LTD.GameLogic.BaseMono;
+using LTD.GameLogic.Managers;
 using UnityEngine;
 
-namespace _LTD.Scripts.GameLogic.Enemies
+namespace LTD.GameLogic.Enemies
 {
+    /// <summary>
+    /// Handles a visual lock effect that fades in and out when the boss takes damage.
+    /// Listens to the DecreaseDevilHealth event.
+    /// </summary>
     public class LTDLockEffect : LTDBaseMono
     {
-        private SpriteRenderer spriteRenderer;
 
+        /// <summary>
+        /// Reference to the SpriteRenderer used for the visual effect.
+        /// </summary>
+        private SpriteRenderer spriteRenderer;
+        
+
+        /// <summary>
+        /// Subscribes to events and initializes the sprite to be fully transparent.
+        /// </summary>
         private void Awake()
         {
             LTDEvents.DecreaseDevilHealth += ShowEffect;
             spriteRenderer = GetComponent<SpriteRenderer>();
 
-            // Set initial alpha to 0 instead of disabling GameObject
             if (spriteRenderer != null)
             {
                 Color c = spriteRenderer.color;
@@ -22,25 +33,38 @@ namespace _LTD.Scripts.GameLogic.Enemies
             }
         }
 
+        /// <summary>
+        /// Unsubscribes from events to prevent memory leaks.
+        /// </summary>
         private void OnDestroy()
         {
             LTDEvents.DecreaseDevilHealth -= ShowEffect;
         }
 
+
+        #region Effect Logic
+
+        /// <summary>
+        /// Triggers the fade effect when the boss takes damage.
+        /// </summary>
         private void ShowEffect()
         {
-            // Don’t disable the GameObject — just fade in/out the renderer
             if (spriteRenderer != null)
             {
-                StartCoroutine(FadeEffect(0.2f, 0.5f, 0.3f)); // Fade in, hold, fade out
+                StartCoroutine(FadeEffect(0.2f, 0.5f, 0.3f)); // fadeIn, hold, fadeOut
             }
         }
 
+        /// <summary>
+        /// Coroutine that handles fading the sprite in, holding it visible, then fading it out.
+        /// </summary>
+        /// <param name="fadeInDuration">Time in seconds to fade in.</param>
+        /// <param name="holdDuration">Time in seconds to stay fully visible.</param>
+        /// <param name="fadeOutDuration">Time in seconds to fade out.</param>
         private IEnumerator FadeEffect(float fadeInDuration, float holdDuration, float fadeOutDuration)
         {
             Color color = spriteRenderer.color;
-
-            // Fade in
+            
             float t = 0f;
             while (t < fadeInDuration)
             {
@@ -52,7 +76,6 @@ namespace _LTD.Scripts.GameLogic.Enemies
 
             yield return new WaitForSeconds(holdDuration);
 
-            // Fade out
             t = 0f;
             while (t < fadeOutDuration)
             {
@@ -62,8 +85,9 @@ namespace _LTD.Scripts.GameLogic.Enemies
                 yield return null;
             }
 
-            // Optional: reset alpha
             spriteRenderer.color = new Color(color.r, color.g, color.b, 0f);
         }
+
+        #endregion
     }
 }
