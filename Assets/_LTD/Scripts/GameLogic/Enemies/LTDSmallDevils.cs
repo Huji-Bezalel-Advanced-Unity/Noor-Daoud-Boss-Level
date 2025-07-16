@@ -43,16 +43,10 @@ namespace LTD.Core.Enemies
             {
                 LTDEvents.DecreasePlayerHealth?.Invoke(3);
             }
-            animator.SetBool("Die", true);
-           // LTDAudioManager.Instance.PlaySFX(LTDAudioManager.Instance.spellCastSFX);
-            StartCoroutine(WaitAndDestroy());
-        }
-
-        private IEnumerator WaitAndDestroy()
-        {
-            yield return new WaitForSeconds(0.1f);
             Destroy(gameObject);
         }
+
+
     }
 
 }
