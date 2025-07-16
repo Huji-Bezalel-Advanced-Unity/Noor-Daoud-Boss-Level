@@ -45,7 +45,7 @@ namespace LTD.GameLogic.Enemies
         {
             if (other.CompareTag("Player"))
             {
-                LTDEvents.DecreasePlayerHealth?.Invoke(2);
+                LTDEvents.DecreasePlayerHealth?.Invoke(3);
             }
             Destroy(gameObject);
         }

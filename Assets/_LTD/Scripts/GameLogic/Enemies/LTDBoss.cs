@@ -26,7 +26,7 @@ namespace LTD.GameLogic.Enemies
         /// <summary>
         /// Time in seconds between each fireball attack cycle.
         /// </summary>
-        private float _shootCooldown = 0.5f;
+        private float _shootCooldown = 3f;
 
         private float _lastShootTime;
         private Coroutine _shootingCoroutine;
@@ -100,7 +100,7 @@ namespace LTD.GameLogic.Enemies
         /// <summary>
         /// Stops the shooting coroutine safely.
         /// </summary>
-        private void StopShooting()
+        public void StopShooting()
         {
             this.StopWithNullifyCoroutine(ref _shootingCoroutine);
         }
@@ -157,21 +157,7 @@ namespace LTD.GameLogic.Enemies
 
             yield return new WaitForSeconds(_shootCooldown);
         }
-
-        /// <summary>
-        /// Destroys all active fireballs spawned by the boss and clears the internal list.
-        /// </summary>
-        public void DestroyAllFireballs()
-        {
-            foreach (var fireball in _spawnedFireballs)
-            {
-                if (fireball != null)
-                    Destroy(fireball);
-            }
-
-            _spawnedFireballs.Clear();
-        }
-
+        
         #endregion
     }
 }

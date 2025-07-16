@@ -46,7 +46,7 @@ namespace LTD.GameLogic.UI
         private void ShowPlayerDeathPanel()
         {
             losingPanel.SetActive(true);
-            StartCoroutine(DelayPauseGame());
+            Time.timeScale = 0f;
         }
 
         /// <summary>
@@ -55,17 +55,9 @@ namespace LTD.GameLogic.UI
         private void ShowDevilDefeatedPanel()
         {
             winningPanel.SetActive(true);
-            StartCoroutine(DelayPauseGame());
-        }
-
-        /// <summary>
-        /// Delays pausing the game for 1 second using unscaled time.
-        /// </summary>
-        private IEnumerator DelayPauseGame()
-        {
-            yield return new WaitForSecondsRealtime(1f);
             Time.timeScale = 0f;
         }
+
 
         #endregion
 
@@ -76,11 +68,6 @@ namespace LTD.GameLogic.UI
         /// </summary>
         public void RestartGame()
         {
-            if (CoreManager.GameManager.Boss != null)
-            {
-                CoreManager.GameManager.Boss.DestroyAllFireballs();
-            }
-
             Time.timeScale = 1f;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
