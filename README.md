@@ -2,15 +2,15 @@
 
 ## 🔗 Links
 
-- **Gameplay Video:** [Add link here]
-- **Itch.io Game:** [Add link here]
-- **CodeReview Video:** [Add link here]
+- **Gameplay Video:** 
+- **Itch.io Game:** 
+- **CodeReview Video:** 
 
 ---
 
 ## 📌 Planning
 
-**Diagram:** [BossLevel_UML_Diagram.pdf](https://github.com/Huji-Bezalel-Advanced-Unity/Noor-Daoud-Boss-Level/blob/main/BossLevel_UML_Diagram.pdf)
+**Diagram:** 
 
 ---
 
