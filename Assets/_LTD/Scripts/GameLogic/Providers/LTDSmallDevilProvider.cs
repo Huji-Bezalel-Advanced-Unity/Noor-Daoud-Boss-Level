@@ -33,7 +33,7 @@ namespace LTD.Gamelogic.Providers
             while (true)
             {
                 SpawnRadialEnemies();
-                yield return new WaitForSeconds(_spawnInterval);
+                yield return new WaitForSeconds(Random.Range(_spawnInterval+1, _spawnInterval-1));
             }
         }
 
@@ -41,30 +41,11 @@ namespace LTD.Gamelogic.Providers
         {
             for (int i = 0; i < spawnPoints.Length; i++)
             {
-                var spawnPoint = spawnPoints[i];
-                Vector3 direction;
-               
-                if (i < 3)
-                {
-                    direction = (spawnPoint.position - devilCenter.position).normalized;
-                }
-                else
-                {
-                    direction = (devilCenter.position + spawnPoint.position).normalized;
-                }
-                if (i == 3)
-                {
-                    direction = Vector3.left.normalized;
-
-                }
-                if (i == 4)
-                {
-                    direction = Vector3.up.normalized;
-
-                }
+                var spawnPoint = spawnPoints[i]; 
+                Vector3 direction = (spawnPoint.position - devilCenter.position).normalized;
+                
                 var enemy = Instantiate(smallDevilsPrefab, spawnPoint.position, Quaternion.identity);
                 enemy.SetDirection(direction);
-
                 _enemies.Add(enemy.transform);
             }
         }

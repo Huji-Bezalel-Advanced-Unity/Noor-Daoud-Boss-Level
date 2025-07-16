@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using LTD.Core.Managers;
 using LTD.Core.Utils;
 using UnityEngine;
@@ -14,5 +15,13 @@ namespace LTD.Core.BaseMono
         {
             this.StopAndStartCoroutine(ref coroutine, LTDExtension.ChangeValueOverTime(startValue, endValue, duration, applyValue, onComplete));
         }
+
+
+        private IEnumerator WaitForSeconds(int seconds, Action onComplete)
+        {
+            yield return new WaitForSeconds(seconds);
+            onComplete?.Invoke();
+        }
+        
     }
 }

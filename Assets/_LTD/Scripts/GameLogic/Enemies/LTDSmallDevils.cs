@@ -14,7 +14,17 @@ namespace LTD.Core.Enemies
 
         public void SetDirection(Vector2 direction)
         {
-            _moveDirection = direction.normalized;
+            float randomAngle = Random.Range(-40f, 40f);
+          
+            float red  =randomAngle * Mathf.Deg2Rad;
+            float cos = Mathf.Cos(red);
+            float sin = Mathf.Sin(red);
+            
+            Vector2 rotatedDireVector2 = new Vector2(
+                direction.x * cos - direction.y*sin,
+                direction.x * sin+ direction.y*cos);
+            
+            _moveDirection = rotatedDireVector2.normalized;
         }
 
         private void Awake()
