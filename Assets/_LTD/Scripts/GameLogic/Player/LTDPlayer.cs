@@ -82,7 +82,7 @@ namespace LTD.Core.Player
 
             Animator.SetBool(Walk, _direction.magnitude > 0.01f);
 
-            if (Input.GetKeyDown(KeyCode.Space) && _direction.magnitude == 0f)
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 // Flip wand position
                 if (_lastHorizontal < 0)

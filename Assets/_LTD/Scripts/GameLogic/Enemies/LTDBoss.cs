@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using LTD.Core.BaseMono;
 using LTD.Core.Utils;
 using LTD.Core.Managers.AudioManager;
@@ -11,8 +12,9 @@ namespace LTD.Core.Enemies
     {
 
         [SerializeField] private LTDFire firePrefab;
+        private readonly List<GameObject> _spawnedFireballs = new List<GameObject>();
 
-        private float shootCooldown = 1;
+        private float shootCooldown = 0.5f;
         private float _lastShootTime;
         private Coroutine _shootingCoroutine;
         private Coroutine _safeZoneDelayCoroutine;
@@ -80,6 +82,7 @@ namespace LTD.Core.Enemies
         {
             while (true)
             {
+            
                 if (Time.time >= _lastShootTime + shootCooldown)
                 {
                     yield return HandleShooting();
@@ -102,6 +105,7 @@ namespace LTD.Core.Enemies
                 var fire = Instantiate(firePrefab, transform.position, Quaternion.identity);
                 if (fire != null)
                 {
+                    _spawnedFireballs.Add(fire.gameObject); 
                     fire.transform.position = transform.position;
 
                     Vector3 baseDirection = (CoreManager.GameManager.Player.transform.position - transform.position).normalized;
@@ -121,7 +125,16 @@ namespace LTD.Core.Enemies
             yield return new WaitForSeconds(shootCooldown);
 
         }
-
+        public void DestroyAllFireballs()
+        {
+            foreach (var fireball in _spawnedFireballs)
+            {
+                if (fireball != null)
+                    Destroy(fireball);
+            }
+    
+            _spawnedFireballs.Clear();
+        }
         #endregion
     }
 }

@@ -6,7 +6,7 @@ namespace LTD.Core.Enemies
 {
     public class LTDSmallDevils : MonoBehaviour
     {
-        [SerializeField] private float speed = 10f;
+        [SerializeField] private float speed = 12f;
         [SerializeField] private Animator animator;
         
         private Vector2 _moveDirection;
@@ -50,7 +50,7 @@ namespace LTD.Core.Enemies
 
         private IEnumerator WaitAndDestroy()
         {
-            yield return new WaitForSeconds(0.19f);
+            yield return new WaitForSeconds(0.1f);
             Destroy(gameObject);
         }
     }

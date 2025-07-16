@@ -1,5 +1,7 @@
-﻿using LTD.Core.Managers.AudioManager;
+﻿using System.Collections;
+using LTD.Core.Managers.AudioManager;
 using LTD.Core.BaseMono;
+using LTD.Core.Enemies;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -37,12 +39,18 @@ namespace _LTD.Scripts.GameLogic.UI
         private void ShowPlayerDeathPanel()
         {
             losingPanel.SetActive(true);
-            Time.timeScale = 0f;
+            StartCoroutine(DelayPauseGame());
         }
-        
+
         private void ShowDevilDefeatedPanel()
         {
             winningPanel.SetActive(true);
+            StartCoroutine(DelayPauseGame());
+        }
+
+        private IEnumerator DelayPauseGame()
+        {
+            yield return new WaitForSecondsRealtime(1f); // Not affected by timeScale
             Time.timeScale = 0f;
         }
 
@@ -52,6 +60,10 @@ namespace _LTD.Scripts.GameLogic.UI
         
         public void RestartGame()
         {
+            if (CoreManager.GameManager.Boss != null)
+            {
+                CoreManager.GameManager.Boss.DestroyAllFireballs();
+            }
             Time.timeScale = 1f;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }

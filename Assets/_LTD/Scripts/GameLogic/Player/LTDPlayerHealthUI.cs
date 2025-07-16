@@ -64,7 +64,6 @@ namespace LTD.Core.Player
         private void OnPlayerDied()
         {
             UpdateUI();
-            CoreManager.GameManager.Player.Animator.SetBool(Die, true); 
             Managers.AudioManager.LTDEvents.PlayerDies?.Invoke();
         }
 

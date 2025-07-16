@@ -56,7 +56,7 @@ namespace LTD.Gamelogic.Providers
 
         #region Utility
 
-        public Transform GetNearestEnemy(Vector3 playerPosition, Vector3 playerForward, float maxAngleDegrees = 90f)
+        public Transform GetNearestEnemy(Vector3 playerPosition, Vector3 playerForward, float maxAngleDegrees)
         {
             if (_enemies == null || _enemies.Count == 0) return null;
 
