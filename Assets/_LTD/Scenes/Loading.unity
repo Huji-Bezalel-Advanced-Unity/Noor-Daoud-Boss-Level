@@ -1935,8 +1935,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 934fb6efcd384e33a8eec31ab7547c5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startButton: {fileID: 1073047568}
-  _imageSlider: {fileID: 1026926487}
+  startButton: {fileID: 1073047568}
+  imageSlider: {fileID: 1026926487}
   loadingSlider: {fileID: 825270500}
 --- !u!4 &1548300750
 Transform:

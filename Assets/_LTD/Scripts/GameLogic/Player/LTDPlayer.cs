@@ -76,9 +76,9 @@ namespace LTD.GameLogic.Player
         {
             float horizontal = 0f;
 
-            if (Input.GetKey(KeyCode.LeftArrow))
+            if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
                 horizontal = -1f;
-            else if (Input.GetKey(KeyCode.RightArrow))
+            else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
                 horizontal = 1f;
 
             float vertical = Input.GetAxisRaw("Vertical");
