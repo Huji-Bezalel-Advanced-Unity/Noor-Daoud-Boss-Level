@@ -2,7 +2,7 @@
 
 ## 🔗 Links
 
-- **Gameplay Video:** 
+- **Gameplay Video:** [Watch on YouTube](https://youtu.be/4z86u5kInRc).
 - **Itch.io Game:** 
 - **CodeReview Video:** [Watch on YouTube](https://youtu.be/rS38EqwxU18)
 
