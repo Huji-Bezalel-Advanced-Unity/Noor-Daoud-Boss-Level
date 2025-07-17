@@ -10871,9 +10871,9 @@ RectTransform:
   - {fileID: 88256954}
   m_Father: {fileID: 611260990}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.057}
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -275.1, y: -500.93}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -275.1, y: 39.070007}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &667206067
