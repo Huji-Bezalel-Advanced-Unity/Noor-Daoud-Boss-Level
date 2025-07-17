@@ -17,14 +17,6 @@
 > Click the image to view full size.
 
 
-
----
-
-## 🎮 Controls (Keyboard)
-
-- **Shoot / Activate Lock:** `Spacebar`  
-- **Movement:** Arrow Keys or `W / A / S / D`
-
 ---
 
 ## 🧙 Game Concept
@@ -33,6 +25,12 @@
 You play as a wizard trapped in the Devil’s Room.  
 Your goal is to lock the boss by activating sigils scattered around, all while surviving attacks from the devil and his minions.
 
+---
+## How To Play
+## 🎮 Controls (Keyboard)
+
+- **Shoot / Activate Lock:** `Spacebar`  
+- **Movement:** Arrow Keys or `W / A / S / D`
 ---
 
 ## 👹 Enemies
