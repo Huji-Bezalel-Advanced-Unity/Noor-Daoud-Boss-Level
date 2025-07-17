@@ -132,7 +132,6 @@ namespace LTD.GameLogic.Player
         private void IncreaseSpeed()
         {
             moveSpeed += 3f;
-            Debug.Log("Increased speed to " + moveSpeed);
         }
 
         /// <summary>
