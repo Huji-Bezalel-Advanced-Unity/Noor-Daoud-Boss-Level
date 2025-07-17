@@ -4,7 +4,7 @@
 
 - **Gameplay Video:** 
 - **Itch.io Game:** 
-- **CodeReview Video:** 
+- **CodeReview Video:** [Watch on YouTube](https://youtu.be/rS38EqwxU18)
 
 ---
 
