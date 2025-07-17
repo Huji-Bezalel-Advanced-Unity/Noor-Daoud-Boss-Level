@@ -4,7 +4,7 @@
 
 - **Gameplay Video:** [Watch on YouTube](https://youtu.be/4z86u5kInRc).
 - **Itch.io Game:** [Play "Lock the Devil"](https://noordaoud.itch.io/lock-the-devil)
-- **CodeReview Video:** [Watch on YouTube] (https://vimeo.com/1102296488?share=copy)
+- **CodeReview Video:** (https://vimeo.com/1102296488?share=copy)
 
 ---
 
