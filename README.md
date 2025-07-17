@@ -4,26 +4,18 @@
 
 - **Gameplay Video:** 
 - **Itch.io Game:** 
-- **CodeReview Video:** 
+- **CodeReview Video:** [Watch on YouTube](https://youtu.be/rS38EqwxU18)
 
 ---
 
 ## 📌 Planning
 
-## 📄 Diagram
+## 📊 Visual Diagram
 
-Download the UML diagram here:  
-[Download Boss Level UML Diagram (PDF)](https://github.com/Huji-Bezalel-Advanced-Unity/Noor-Daoud-Boss-Level/raw/main/BossLevel_UML_Diagram.pdf)
+[![Boss Level Diagram](https://github.com/Huji-Bezalel-Advanced-Unity/Noor-Daoud-Boss-Level/raw/main/BossLevel.png)](https://github.com/Huji-Bezalel-Advanced-Unity/Noor-Daoud-Boss-Level/raw/main/BossLevel.png)
 
+> Click the image to view full size.
 
-
-
----
-
-## 🎮 Controls (Keyboard)
-
-- **Shoot / Activate Lock:** `Spacebar`  
-- **Movement:** Arrow Keys or `W / A / S / D`
 
 ---
 
@@ -33,6 +25,12 @@ Download the UML diagram here:
 You play as a wizard trapped in the Devil’s Room.  
 Your goal is to lock the boss by activating sigils scattered around, all while surviving attacks from the devil and his minions.
 
+---
+## How To Play
+## 🎮 Controls (Keyboard)
+
+- **Shoot / Activate Lock:** `Spacebar`  
+- **Movement:** Arrow Keys or `W / A / S / D`
 ---
 
 ## 👹 Enemies
