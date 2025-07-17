@@ -10,11 +10,11 @@
 
 ## 📌 Planning
 
-## 📄 Diagram
+## 📊 Visual Diagram
 
-Download the UML diagram here:  
-[Download Boss Level UML Diagram (PDF)](https://github.com/Huji-Bezalel-Advanced-Unity/Noor-Daoud-Boss-Level/raw/main/BossLevel_UML_Diagram.pdf)
+[![Boss Level Diagram](https://github.com/Huji-Bezalel-Advanced-Unity/Noor-Daoud-Boss-Level/raw/main/Untitled.jpg)](https://github.com/Huji-Bezalel-Advanced-Unity/Noor-Daoud-Boss-Level/raw/main/Untitled.jpg)
 
+> Click the image to view full size.
 
 
 
