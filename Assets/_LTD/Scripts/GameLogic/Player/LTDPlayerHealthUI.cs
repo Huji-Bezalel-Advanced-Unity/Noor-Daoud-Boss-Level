@@ -12,7 +12,6 @@ namespace LTD.GameLogic.Player
     public class LTDPlayerHealthUI : LTDBaseMono
     {
         private static readonly int Hurt = Animator.StringToHash("Hurt");
-        private static readonly int Die = Animator.StringToHash("Die");
 
         [Header("UI Elements")]
         [Tooltip("Slider representing player's current health.")]
@@ -20,7 +19,7 @@ namespace LTD.GameLogic.Player
 
         [Header("Settings")]
         [Tooltip("Maximum health of the player.")]
-        [SerializeField] private int maxHealth = 30;
+        [SerializeField] private int maxHealth = 25;
 
         private int _currentHealth;
         

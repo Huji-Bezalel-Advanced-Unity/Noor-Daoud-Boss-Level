@@ -40,11 +40,9 @@ namespace LTD.GameLogic.Player
             while (_target != null)
             {
                 Vector3 direction = (_target.position - transform.position).normalized;
-
-                // Rotate to face target
+                
                 transform.up = direction;
-
-                // Move forward
+                
                 transform.position += transform.up * speed * Time.deltaTime;
 
                 yield return null;

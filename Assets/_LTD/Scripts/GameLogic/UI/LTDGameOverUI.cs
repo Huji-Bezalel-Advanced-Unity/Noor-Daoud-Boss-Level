@@ -1,7 +1,5 @@
-﻿using System.Collections;
+﻿using LTD.GameLogic.BaseMono;
 using LTD.GameLogic.Managers;
-using LTD.GameLogic.BaseMono;
-using LTD.GameLogic.Enemies;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;

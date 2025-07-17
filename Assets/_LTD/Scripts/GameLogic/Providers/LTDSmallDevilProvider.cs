@@ -58,6 +58,7 @@ namespace LTD.Gamelogic.Providers
         /// </summary>
         private void SpawnRadialEnemies()
         {
+            
             foreach (var spawnPoint in spawnPoints)
             {
                 Vector3 direction = (spawnPoint.position - devilCenter.position).normalized;

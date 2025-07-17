@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using LTD.GameLogic.Utils;
 using LTD.GameLogic.BaseMono;
 using LTD.GameLogic.Managers;
@@ -16,13 +15,7 @@ namespace LTD.GameLogic.Enemies
         [Header("Fireball Settings")]
         [Tooltip("Prefab for the fireball projectiles.")]
         [SerializeField] private LTDFire firePrefab;
-
-        /// <summary>
-        /// List of all active fireball GameObjects spawned by the boss.
-        /// Used for cleanup during restart or scene unload.
-        /// </summary>
-        private readonly List<GameObject> _spawnedFireballs = new List<GameObject>();
-
+        
         /// <summary>
         /// Time in seconds between each fireball attack cycle.
         /// </summary>
@@ -137,7 +130,6 @@ namespace LTD.GameLogic.Enemies
                 var fire = Instantiate(firePrefab, transform.position, Quaternion.identity);
                 if (fire != null)
                 {
-                    _spawnedFireballs.Add(fire.gameObject);
                     fire.transform.position = transform.position;
 
                     Vector3 baseDirection = (CoreManager.GameManager.Player.transform.position - transform.position).normalized;
